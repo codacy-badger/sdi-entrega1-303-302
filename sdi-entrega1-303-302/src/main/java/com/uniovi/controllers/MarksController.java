@@ -33,8 +33,8 @@ public class MarksController {
 
 	@RequestMapping("/mark/list/update")
 	public String updateList(Model model, Pageable pageable, Principal principal) {
-		String dni = principal.getName(); // DNI es el name de la autenticación
-		User user = usersService.getUserByDni(dni);
+		String Email = principal.getName(); // Email es el name de la autenticación
+		User user = usersService.getUserByEmail(Email);
 		Page<Mark> marks = marksService.getMarksForUser(pageable, user);
 		model.addAttribute("markList", marks.getContent());
 		return "mark/list :: tableMarks";
@@ -96,8 +96,8 @@ public class MarksController {
 	public String getList(Model model, Pageable pageable, Principal principal,
 			@RequestParam(value = "", required=false) String searchText){
 		
-	String dni = principal.getName(); // DNI es el name de la autenticación
-	User user = usersService.getUserByDni(dni);
+	String Email = principal.getName(); // Email es el name de la autenticación
+	User user = usersService.getUserByEmail(Email);
 	Page<Mark> marks = new PageImpl<Mark>(new LinkedList<Mark>());
 	if (searchText != null && !searchText.isEmpty()) {
 	marks = marksService

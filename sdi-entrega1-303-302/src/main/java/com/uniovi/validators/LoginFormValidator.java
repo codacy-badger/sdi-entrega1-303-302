@@ -21,14 +21,14 @@ public class LoginFormValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		User user = (User) target;
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "dni", "Error.empty");
-		if (user.getDni().length() < 5 || user.getDni().length() > 24) {
-			errors.rejectValue("dni", "Error.login.dni.length");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "Error.empty");
+		if (user.getEmail().length() < 5 || user.getEmail().length() > 24) {
+			errors.rejectValue("email", "Error.login.email.length");
 		}
-		if (usersService.getUserByDni(user.getDni()) == null) {
-			errors.rejectValue("dni", "Error.login.dni.doesNotExist");
+		if (usersService.getUserByEmail(user.getEmail()) == null) {
+			errors.rejectValue("email", "Error.login.email.doesNotExist");
 		}
-		if (usersService.getUserByDni(user.getDni()).getPassword().equals(user.getPassword())) {
+		if (usersService.getUserByEmail(user.getEmail()).getPassword().equals(user.getPassword())) {
 			errors.rejectValue("passwordConfirm", "Error.login.passwordConfirm.notCorrect");
 		}
 	}
