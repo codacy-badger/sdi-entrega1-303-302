@@ -1,5 +1,8 @@
 package com.uniovi.validators;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -14,6 +17,10 @@ public class SignUpFormValidator implements Validator {
 	@Autowired
 	private UsersService usersService;
 
+	// Patrón para validar el email
+    Pattern pattern = Pattern
+            .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                    + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 	@Override
 	public boolean supports(Class<?> aClass) {
 		return User.class.equals(aClass);
@@ -23,8 +30,10 @@ public class SignUpFormValidator implements Validator {
 	public void validate(Object target, Errors errors) {
 		User user = (User) target;
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "Error.empty");
-		if (user.getEmail().length() < 5 || user.getEmail().length() > 24) {
-			errors.rejectValue("email", "Error.signup.email.length");
+		Matcher matcher = pattern.matcher(user.getEmail());
+		
+		if (!matcher.find()) {
+			errors.rejectValue("email", "Error.signup.email.syntax");
 		}
 		if (usersService.getUserByEmail(user.getEmail()) != null) {
 			errors.rejectValue("email", "Error.signup.email.duplicate");
