@@ -102,6 +102,9 @@ public class UsersController {
 	public String home(Model model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String Email = auth.getName();
+		if(Email.equals("admin@email.com")) {
+			return "admin";
+		}
 		User activeUser = usersService.getUserByEmail(Email);
 		model.addAttribute("markList", activeUser.getMarks());
 		return "home";

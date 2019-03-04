@@ -99,3 +99,254 @@ DISCONNECT
 DISCONNECT
 /*C31*/SET SCHEMA PUBLIC
 DISCONNECT
+/*C32*/SET SCHEMA PUBLIC
+alter table mark drop constraint FKlqq420tc6l50pax8so16fane0
+drop table mark if exists
+drop table user if exists
+drop sequence hibernate_sequence if exists
+create sequence hibernate_sequence start with 1 increment by 1
+create table mark (id bigint not null, description varchar(255), resend boolean, score double, user_id bigint, primary key (id))
+create table user (id bigint not null, email varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
+alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
+alter table mark add constraint FKlqq420tc6l50pax8so16fane0 foreign key (user_id) references user
+INSERT INTO USER VALUES(1,'pruebadeemail@prueba.com','D\u00edaz','Pedro','$2a$10$.QcJPprdZ3c6fGPYD3PdMOe7e2Lgx6mQoNUs9rNwOtkgMSoAf6PVC','ROLE_STUDENT')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
+COMMIT
+INSERT INTO USER VALUES(2,'admin@email.com','delSistema','Admin','$2a$10$Xn.JI.A/jPWNAFRu6ZGZouYyUfSIJSw0cwSpb6c1ydEKWJCz/b17e','ROLE_ADMIN')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 3
+COMMIT
+DISCONNECT
+/*C33*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C34*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C35*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C36*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C37*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C38*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C39*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C40*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C41*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C42*/SET SCHEMA PUBLIC
+alter table mark drop constraint FKlqq420tc6l50pax8so16fane0
+drop table mark if exists
+drop table user if exists
+drop sequence hibernate_sequence if exists
+create sequence hibernate_sequence start with 1 increment by 1
+create table mark (id bigint not null, description varchar(255), resend boolean, score double, user_id bigint, primary key (id))
+create table user (id bigint not null, email varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
+alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
+alter table mark add constraint FKlqq420tc6l50pax8so16fane0 foreign key (user_id) references user
+INSERT INTO USER VALUES(1,'pruebadeemail@prueba.com','D\u00edaz','Pedro','$2a$10$9qqf.J7H4dKfTFxwm5Q1g.PO8BKD/bYD9gFSke.nP1kKf/WUKEBGq','ROLE_STUDENT')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
+COMMIT
+INSERT INTO USER VALUES(2,'admin@email.com','delSistema','Admin','$2a$10$N3kGYjk5OO0skApmeRP/WuoXZrOTzL.4EtfejAoDw7mgsmDmSHR/q','ROLE_ADMIN')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 3
+COMMIT
+DISCONNECT
+/*C43*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C44*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C45*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C46*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C47*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C48*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C49*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C50*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C51*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C52*/SET SCHEMA PUBLIC
+alter table mark drop constraint FKlqq420tc6l50pax8so16fane0
+drop table mark if exists
+drop table user if exists
+drop sequence hibernate_sequence if exists
+create sequence hibernate_sequence start with 1 increment by 1
+create table mark (id bigint not null, description varchar(255), resend boolean, score double, user_id bigint, primary key (id))
+create table user (id bigint not null, email varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
+alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
+alter table mark add constraint FKlqq420tc6l50pax8so16fane0 foreign key (user_id) references user
+INSERT INTO USER VALUES(1,'pruebadeemail@prueba.com','D\u00edaz','Pedro','$2a$10$MzX5QXWtOzcjqgrsoKfOHuZrFzppP9fNVOTwVwerN1VKHgTzgYNn6','ROLE_STUDENT')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
+COMMIT
+INSERT INTO USER VALUES(2,'admin@email.com','delSistema','Admin','$2a$10$LfAt86HVG8HqZA0gTtv2luYno55o0Q8N.Uz9Uw79ozQVtCzq.Z5MW','ROLE_ADMIN')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 3
+COMMIT
+INSERT INTO USER VALUES(3,'hasdandkna','kansdkjanjdknaskjdnajksn','aknsdjkansjdnasndskan','$2a$10$CDeZsnxOIlslsqy6ch.q6Ox/tPvVUVvCAK3IghYMX0Cj1XxSWUxlm','ROLE_STUDENT')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 4
+COMMIT
+DISCONNECT
+/*C53*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C54*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C55*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C56*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C57*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C58*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C59*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C60*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C61*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C62*/SET SCHEMA PUBLIC
+alter table mark drop constraint FKlqq420tc6l50pax8so16fane0
+drop table mark if exists
+drop table user if exists
+drop sequence hibernate_sequence if exists
+create sequence hibernate_sequence start with 1 increment by 1
+create table mark (id bigint not null, description varchar(255), resend boolean, score double, user_id bigint, primary key (id))
+create table user (id bigint not null, email varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
+alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
+alter table mark add constraint FKlqq420tc6l50pax8so16fane0 foreign key (user_id) references user
+INSERT INTO USER VALUES(1,'pruebadeemail@prueba.com','D\u00edaz','Pedro','$2a$10$0nOXoqHkmycpKfoiv/h22uC3SWZh2UBldOrqIuHh60OpiiJpjDSzq','ROLE_STUDENT')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
+COMMIT
+INSERT INTO USER VALUES(2,'admin@email.com','delSistema','Admin','$2a$10$L/0hOvEjcaZBXByN6pxUne.ZgWYeFqzLcTMjU9OFFp5fdd0M1F0wi','ROLE_ADMIN')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 3
+COMMIT
+DISCONNECT
+/*C63*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C64*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C65*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C66*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C67*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C68*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C69*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C70*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C71*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C72*/SET SCHEMA PUBLIC
+alter table mark drop constraint FKlqq420tc6l50pax8so16fane0
+drop table mark if exists
+drop table user if exists
+drop sequence hibernate_sequence if exists
+create sequence hibernate_sequence start with 1 increment by 1
+create table mark (id bigint not null, description varchar(255), resend boolean, score double, user_id bigint, primary key (id))
+create table user (id bigint not null, email varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
+alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
+alter table mark add constraint FKlqq420tc6l50pax8so16fane0 foreign key (user_id) references user
+INSERT INTO USER VALUES(1,'pruebadeemail@prueba.com','D\u00edaz','Pedro','$2a$10$sJWk2NBpL57vMhI3dwfhtew/swT0.Ir094Z4gco93thP1URYhVAyK','ROLE_STUDENT')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
+COMMIT
+INSERT INTO USER VALUES(2,'admin@email.com','delSistema','Admin','$2a$10$8vxCpwNydhiaXzrhpXDqZObC2vHoPhziqMAlpx1EseThRuthrBJ82','ROLE_ADMIN')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 3
+COMMIT
+DISCONNECT
+/*C73*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C74*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C75*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C76*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C77*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C78*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C79*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C80*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C81*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C82*/SET SCHEMA PUBLIC
+alter table mark drop constraint FKlqq420tc6l50pax8so16fane0
+drop table mark if exists
+drop table user if exists
+drop sequence hibernate_sequence if exists
+create sequence hibernate_sequence start with 1 increment by 1
+create table mark (id bigint not null, description varchar(255), resend boolean, score double, user_id bigint, primary key (id))
+create table user (id bigint not null, email varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
+alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
+alter table mark add constraint FKlqq420tc6l50pax8so16fane0 foreign key (user_id) references user
+INSERT INTO USER VALUES(1,'pruebadeemail@prueba.com','D\u00edaz','Pedro','$2a$10$Pw.n8YngKovAkI/odG9XreLsNo7tOtUg8Ev38kRYVQbiZ01ygTv3q','ROLE_STUDENT')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
+COMMIT
+INSERT INTO USER VALUES(2,'admin@email.com','delSistema','Admin','$2a$10$xDDXf5TFqsA6ZfpEo8MnIubk5zBiPJzr9nLI4s9kDzxJUX5EIbBXq','ROLE_ADMIN')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 3
+COMMIT
+INSERT INTO USER VALUES(3,'hola@hola.es','aksjndkans','sjdnajknsjk','$2a$10$.Qo8jkiGi/9.S6FyWiiz0ORSJgiBFZj9B8Ek0.KIPKGBG7X8OHc8m','ROLE_STUDENT')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 4
+COMMIT
+DISCONNECT
+/*C83*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C84*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C85*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C86*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C87*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C88*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C89*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C90*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C91*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C92*/SET SCHEMA PUBLIC
+alter table mark drop constraint FKlqq420tc6l50pax8so16fane0
+drop table mark if exists
+drop table user if exists
+drop sequence hibernate_sequence if exists
+create sequence hibernate_sequence start with 1 increment by 1
+create table mark (id bigint not null, description varchar(255), resend boolean, score double, user_id bigint, primary key (id))
+create table user (id bigint not null, email varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
+alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
+alter table mark add constraint FKlqq420tc6l50pax8so16fane0 foreign key (user_id) references user
+INSERT INTO USER VALUES(1,'pruebadeemail@prueba.com','D\u00edaz','Pedro','$2a$10$GkhrKE8KW4/Fo33sZWw4t.5oyUtxRX.AcPf6LR2JXX4soE7M6uVa.','ROLE_STUDENT')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
+COMMIT
+INSERT INTO USER VALUES(2,'admin@email.com','delSistema','Admin','$2a$10$8j3UazbujH9oK6Dp3Rf7/umuLKjoGeMIYVTKQYe69W0C9Ua0n3TIe','ROLE_ADMIN')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 3
+COMMIT
+DISCONNECT
+/*C93*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C94*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C95*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C96*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C97*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C98*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C99*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C100*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C101*/SET SCHEMA PUBLIC
+DISCONNECT
