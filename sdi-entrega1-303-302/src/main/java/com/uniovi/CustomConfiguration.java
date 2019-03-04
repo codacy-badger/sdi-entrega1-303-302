@@ -17,6 +17,7 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 @Configuration
 public class CustomConfiguration implements WebMvcConfigurer {
 
+	
 	@Override
 	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
 		int page = 0;
