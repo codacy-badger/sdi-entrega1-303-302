@@ -1,352 +1,219 @@
-/*C1*/SET SCHEMA SYSTEM_LOBS
-INSERT INTO BLOCKS VALUES(0,2147483647,0)
-COMMIT
-/*C2*/SET SCHEMA PUBLIC
-drop table mark if exists
-drop table user if exists
+/*C103*/SET SCHEMA PUBLIC
+drop table offer if exists
 drop sequence hibernate_sequence if exists
 create sequence hibernate_sequence start with 1 increment by 1
-create table mark (id bigint not null, description varchar(255), resend boolean, score double, user_id bigint, primary key (id))
-create table user (id bigint not null, email varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
-alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
-alter table mark add constraint FKlqq420tc6l50pax8so16fane0 foreign key (user_id) references user
-INSERT INTO USER VALUES(1,'pruebadeemail@prueba.com','D\u00edaz','Pedro','$2a$10$TJwSEZfd25nk9EVms/fxVup6SyghCD1lJbk8sNvHypF5Hh5vQHWse','ROLE_STUDENT')
+create table offer (id bigint not null, description varchar(255), name varchar(255), picture varchar(255), price double, resend boolean, user_id bigint, primary key (id))
+alter table offer add constraint FKo0rdvexlxmyakcvw8b5aqidlk foreign key (user_id) references user
 ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
-COMMIT
 DISCONNECT
-/*C3*/SET SCHEMA PUBLIC
+/*C104*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C4*/SET SCHEMA PUBLIC
+/*C105*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C5*/SET SCHEMA PUBLIC
+/*C106*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C6*/SET SCHEMA PUBLIC
+/*C107*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C7*/SET SCHEMA PUBLIC
+/*C108*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C8*/SET SCHEMA PUBLIC
+/*C109*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C9*/SET SCHEMA PUBLIC
+/*C110*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C10*/SET SCHEMA PUBLIC
+/*C111*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C11*/SET SCHEMA PUBLIC
+/*C112*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C12*/SET SCHEMA PUBLIC
-alter table mark drop constraint FKlqq420tc6l50pax8so16fane0
-drop table mark if exists
-drop table user if exists
+/*C113*/SET SCHEMA PUBLIC
+alter table offer drop constraint FKo0rdvexlxmyakcvw8b5aqidlk
+drop table offer if exists
 drop sequence hibernate_sequence if exists
 create sequence hibernate_sequence start with 1 increment by 1
-create table mark (id bigint not null, description varchar(255), resend boolean, score double, user_id bigint, primary key (id))
-create table user (id bigint not null, email varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
-alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
-alter table mark add constraint FKlqq420tc6l50pax8so16fane0 foreign key (user_id) references user
-INSERT INTO USER VALUES(1,'pruebadeemail@prueba.com','D\u00edaz','Pedro','$2a$10$4DNdpfUwlxsqTaa8F5AvSO/PPU/8zVGlxyNIcWbKXaEmBkIuplHWu','ROLE_STUDENT')
+create table offer (id bigint not null, description varchar(255), name varchar(255), picture varchar(255), price double, resend boolean, user_id bigint, primary key (id))
+alter table offer add constraint FKo0rdvexlxmyakcvw8b5aqidlk foreign key (user_id) references user
 ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
-COMMIT
 DISCONNECT
-/*C13*/SET SCHEMA PUBLIC
+/*C114*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C14*/SET SCHEMA PUBLIC
+/*C115*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C15*/SET SCHEMA PUBLIC
+/*C116*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C16*/SET SCHEMA PUBLIC
+/*C117*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C17*/SET SCHEMA PUBLIC
+/*C118*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C18*/SET SCHEMA PUBLIC
+/*C119*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C19*/SET SCHEMA PUBLIC
+/*C120*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C20*/SET SCHEMA PUBLIC
+/*C121*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C21*/SET SCHEMA PUBLIC
+/*C122*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C22*/SET SCHEMA PUBLIC
-alter table mark drop constraint FKlqq420tc6l50pax8so16fane0
-drop table mark if exists
-drop table user if exists
+/*C123*/SET SCHEMA PUBLIC
+alter table offer drop constraint FKo0rdvexlxmyakcvw8b5aqidlk
+drop table offer if exists
 drop sequence hibernate_sequence if exists
 create sequence hibernate_sequence start with 1 increment by 1
-create table mark (id bigint not null, description varchar(255), resend boolean, score double, user_id bigint, primary key (id))
-create table user (id bigint not null, email varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
-alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
-alter table mark add constraint FKlqq420tc6l50pax8so16fane0 foreign key (user_id) references user
-INSERT INTO USER VALUES(1,'pruebadeemail@prueba.com','D\u00edaz','Pedro','$2a$10$126uLmqCrH.T4mYOf7nWcemAeITb11rUAbqeuAY1UkOpsyiHEl262','ROLE_STUDENT')
+create table offer (id bigint not null, description varchar(255), name varchar(255), picture varchar(255), price double, resend boolean, user_id bigint, primary key (id))
+alter table offer add constraint FKo0rdvexlxmyakcvw8b5aqidlk foreign key (user_id) references user
 ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
-COMMIT
-INSERT INTO USER VALUES(2,'admin@email.com','delSistema','Admin','$2a$10$TTyHv7RoJwsXFUPk57q9luwVJAZKVZ7Zn7RH9wpv4bhtWTuXPOLoe','ROLE_ADMIN')
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 3
-COMMIT
 DISCONNECT
-/*C23*/SET SCHEMA PUBLIC
+/*C124*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C24*/SET SCHEMA PUBLIC
+/*C125*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C25*/SET SCHEMA PUBLIC
+/*C126*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C26*/SET SCHEMA PUBLIC
+/*C127*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C27*/SET SCHEMA PUBLIC
+/*C128*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C28*/SET SCHEMA PUBLIC
+/*C129*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C29*/SET SCHEMA PUBLIC
+/*C130*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C30*/SET SCHEMA PUBLIC
+/*C131*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C31*/SET SCHEMA PUBLIC
+/*C132*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C32*/SET SCHEMA PUBLIC
-alter table mark drop constraint FKlqq420tc6l50pax8so16fane0
-drop table mark if exists
-drop table user if exists
+/*C133*/SET SCHEMA PUBLIC
+alter table offer drop constraint FKo0rdvexlxmyakcvw8b5aqidlk
+drop table offer if exists
 drop sequence hibernate_sequence if exists
 create sequence hibernate_sequence start with 1 increment by 1
-create table mark (id bigint not null, description varchar(255), resend boolean, score double, user_id bigint, primary key (id))
-create table user (id bigint not null, email varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
-alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
-alter table mark add constraint FKlqq420tc6l50pax8so16fane0 foreign key (user_id) references user
-INSERT INTO USER VALUES(1,'pruebadeemail@prueba.com','D\u00edaz','Pedro','$2a$10$.QcJPprdZ3c6fGPYD3PdMOe7e2Lgx6mQoNUs9rNwOtkgMSoAf6PVC','ROLE_STUDENT')
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
-COMMIT
-INSERT INTO USER VALUES(2,'admin@email.com','delSistema','Admin','$2a$10$Xn.JI.A/jPWNAFRu6ZGZouYyUfSIJSw0cwSpb6c1ydEKWJCz/b17e','ROLE_ADMIN')
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 3
-COMMIT
+create table offer (id bigint not null, description varchar(255), name varchar(255), picture varchar(255), price double, resend boolean, user_id bigint, primary key (id))
+alter table offer add constraint FKo0rdvexlxmyakcvw8b5aqidlk foreign key (user_id) references user
 DISCONNECT
-/*C33*/SET SCHEMA PUBLIC
+/*C134*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C34*/SET SCHEMA PUBLIC
+/*C135*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C35*/SET SCHEMA PUBLIC
+/*C136*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C36*/SET SCHEMA PUBLIC
+/*C137*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C37*/SET SCHEMA PUBLIC
+/*C138*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C38*/SET SCHEMA PUBLIC
+/*C139*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C39*/SET SCHEMA PUBLIC
+/*C140*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C40*/SET SCHEMA PUBLIC
+/*C141*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C41*/SET SCHEMA PUBLIC
+/*C142*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C42*/SET SCHEMA PUBLIC
-alter table mark drop constraint FKlqq420tc6l50pax8so16fane0
-drop table mark if exists
-drop table user if exists
+/*C143*/SET SCHEMA PUBLIC
+alter table offer drop constraint FKo0rdvexlxmyakcvw8b5aqidlk
+drop table offer if exists
 drop sequence hibernate_sequence if exists
 create sequence hibernate_sequence start with 1 increment by 1
-create table mark (id bigint not null, description varchar(255), resend boolean, score double, user_id bigint, primary key (id))
-create table user (id bigint not null, email varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
-alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
-alter table mark add constraint FKlqq420tc6l50pax8so16fane0 foreign key (user_id) references user
-INSERT INTO USER VALUES(1,'pruebadeemail@prueba.com','D\u00edaz','Pedro','$2a$10$9qqf.J7H4dKfTFxwm5Q1g.PO8BKD/bYD9gFSke.nP1kKf/WUKEBGq','ROLE_STUDENT')
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
-COMMIT
-INSERT INTO USER VALUES(2,'admin@email.com','delSistema','Admin','$2a$10$N3kGYjk5OO0skApmeRP/WuoXZrOTzL.4EtfejAoDw7mgsmDmSHR/q','ROLE_ADMIN')
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 3
-COMMIT
+create table offer (id bigint not null, description varchar(255), name varchar(255), picture varchar(255), price double, resend boolean, user_id bigint, primary key (id))
+alter table offer add constraint FKo0rdvexlxmyakcvw8b5aqidlk foreign key (user_id) references user
 DISCONNECT
-/*C43*/SET SCHEMA PUBLIC
+/*C144*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C44*/SET SCHEMA PUBLIC
+/*C145*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C45*/SET SCHEMA PUBLIC
+/*C146*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C46*/SET SCHEMA PUBLIC
+/*C147*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C47*/SET SCHEMA PUBLIC
+/*C148*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C48*/SET SCHEMA PUBLIC
+/*C149*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C49*/SET SCHEMA PUBLIC
+/*C150*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C50*/SET SCHEMA PUBLIC
+/*C151*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C51*/SET SCHEMA PUBLIC
+/*C152*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C52*/SET SCHEMA PUBLIC
-alter table mark drop constraint FKlqq420tc6l50pax8so16fane0
-drop table mark if exists
-drop table user if exists
+/*C153*/SET SCHEMA PUBLIC
+alter table offer drop constraint FKo0rdvexlxmyakcvw8b5aqidlk
+drop table offer if exists
 drop sequence hibernate_sequence if exists
 create sequence hibernate_sequence start with 1 increment by 1
-create table mark (id bigint not null, description varchar(255), resend boolean, score double, user_id bigint, primary key (id))
-create table user (id bigint not null, email varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
-alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
-alter table mark add constraint FKlqq420tc6l50pax8so16fane0 foreign key (user_id) references user
-INSERT INTO USER VALUES(1,'pruebadeemail@prueba.com','D\u00edaz','Pedro','$2a$10$MzX5QXWtOzcjqgrsoKfOHuZrFzppP9fNVOTwVwerN1VKHgTzgYNn6','ROLE_STUDENT')
+create table offer (id bigint not null, description varchar(255), name varchar(255), picture varchar(255), price double, resend boolean, user_id bigint, primary key (id))
+alter table offer add constraint FKo0rdvexlxmyakcvw8b5aqidlk foreign key (user_id) references user
+DISCONNECT
+/*C154*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C155*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C156*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C157*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C158*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C159*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C160*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C161*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C162*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C163*/SET SCHEMA PUBLIC
 ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
-COMMIT
-INSERT INTO USER VALUES(2,'admin@email.com','delSistema','Admin','$2a$10$LfAt86HVG8HqZA0gTtv2luYno55o0Q8N.Uz9Uw79ozQVtCzq.Z5MW','ROLE_ADMIN')
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 3
-COMMIT
-INSERT INTO USER VALUES(3,'hasdandkna','kansdkjanjdknaskjdnajksn','aknsdjkansjdnasndskan','$2a$10$CDeZsnxOIlslsqy6ch.q6Ox/tPvVUVvCAK3IghYMX0Cj1XxSWUxlm','ROLE_STUDENT')
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 4
-COMMIT
 DISCONNECT
-/*C53*/SET SCHEMA PUBLIC
+/*C164*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C54*/SET SCHEMA PUBLIC
+/*C165*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C55*/SET SCHEMA PUBLIC
+/*C166*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C56*/SET SCHEMA PUBLIC
+/*C167*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C57*/SET SCHEMA PUBLIC
+/*C168*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C58*/SET SCHEMA PUBLIC
+/*C169*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C59*/SET SCHEMA PUBLIC
+/*C170*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C60*/SET SCHEMA PUBLIC
+/*C171*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C61*/SET SCHEMA PUBLIC
+/*C172*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C62*/SET SCHEMA PUBLIC
-alter table mark drop constraint FKlqq420tc6l50pax8so16fane0
-drop table mark if exists
-drop table user if exists
-drop sequence hibernate_sequence if exists
-create sequence hibernate_sequence start with 1 increment by 1
-create table mark (id bigint not null, description varchar(255), resend boolean, score double, user_id bigint, primary key (id))
-create table user (id bigint not null, email varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
-alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
-alter table mark add constraint FKlqq420tc6l50pax8so16fane0 foreign key (user_id) references user
-INSERT INTO USER VALUES(1,'pruebadeemail@prueba.com','D\u00edaz','Pedro','$2a$10$0nOXoqHkmycpKfoiv/h22uC3SWZh2UBldOrqIuHh60OpiiJpjDSzq','ROLE_STUDENT')
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
-COMMIT
-INSERT INTO USER VALUES(2,'admin@email.com','delSistema','Admin','$2a$10$L/0hOvEjcaZBXByN6pxUne.ZgWYeFqzLcTMjU9OFFp5fdd0M1F0wi','ROLE_ADMIN')
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 3
-COMMIT
+/*C173*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C63*/SET SCHEMA PUBLIC
+/*C174*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C64*/SET SCHEMA PUBLIC
+/*C175*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C65*/SET SCHEMA PUBLIC
+/*C176*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C66*/SET SCHEMA PUBLIC
+/*C177*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C67*/SET SCHEMA PUBLIC
+/*C178*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C68*/SET SCHEMA PUBLIC
+/*C179*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C69*/SET SCHEMA PUBLIC
+/*C180*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C70*/SET SCHEMA PUBLIC
+/*C181*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C71*/SET SCHEMA PUBLIC
+/*C182*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C72*/SET SCHEMA PUBLIC
-alter table mark drop constraint FKlqq420tc6l50pax8so16fane0
-drop table mark if exists
-drop table user if exists
-drop sequence hibernate_sequence if exists
-create sequence hibernate_sequence start with 1 increment by 1
-create table mark (id bigint not null, description varchar(255), resend boolean, score double, user_id bigint, primary key (id))
-create table user (id bigint not null, email varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
-alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
-alter table mark add constraint FKlqq420tc6l50pax8so16fane0 foreign key (user_id) references user
-INSERT INTO USER VALUES(1,'pruebadeemail@prueba.com','D\u00edaz','Pedro','$2a$10$sJWk2NBpL57vMhI3dwfhtew/swT0.Ir094Z4gco93thP1URYhVAyK','ROLE_STUDENT')
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
-COMMIT
-INSERT INTO USER VALUES(2,'admin@email.com','delSistema','Admin','$2a$10$8vxCpwNydhiaXzrhpXDqZObC2vHoPhziqMAlpx1EseThRuthrBJ82','ROLE_ADMIN')
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 3
-COMMIT
+/*C183*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C73*/SET SCHEMA PUBLIC
+/*C184*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C74*/SET SCHEMA PUBLIC
+/*C185*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C75*/SET SCHEMA PUBLIC
+/*C186*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C76*/SET SCHEMA PUBLIC
+/*C187*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C77*/SET SCHEMA PUBLIC
+/*C188*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C78*/SET SCHEMA PUBLIC
+/*C189*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C79*/SET SCHEMA PUBLIC
+/*C190*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C80*/SET SCHEMA PUBLIC
+/*C191*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C81*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C82*/SET SCHEMA PUBLIC
-alter table mark drop constraint FKlqq420tc6l50pax8so16fane0
-drop table mark if exists
-drop table user if exists
-drop sequence hibernate_sequence if exists
-create sequence hibernate_sequence start with 1 increment by 1
-create table mark (id bigint not null, description varchar(255), resend boolean, score double, user_id bigint, primary key (id))
-create table user (id bigint not null, email varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
-alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
-alter table mark add constraint FKlqq420tc6l50pax8so16fane0 foreign key (user_id) references user
-INSERT INTO USER VALUES(1,'pruebadeemail@prueba.com','D\u00edaz','Pedro','$2a$10$Pw.n8YngKovAkI/odG9XreLsNo7tOtUg8Ev38kRYVQbiZ01ygTv3q','ROLE_STUDENT')
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
-COMMIT
-INSERT INTO USER VALUES(2,'admin@email.com','delSistema','Admin','$2a$10$xDDXf5TFqsA6ZfpEo8MnIubk5zBiPJzr9nLI4s9kDzxJUX5EIbBXq','ROLE_ADMIN')
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 3
-COMMIT
-INSERT INTO USER VALUES(3,'hola@hola.es','aksjndkans','sjdnajknsjk','$2a$10$.Qo8jkiGi/9.S6FyWiiz0ORSJgiBFZj9B8Ek0.KIPKGBG7X8OHc8m','ROLE_STUDENT')
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 4
-COMMIT
-DISCONNECT
-/*C83*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C84*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C85*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C86*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C87*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C88*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C89*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C90*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C91*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C92*/SET SCHEMA PUBLIC
-alter table mark drop constraint FKlqq420tc6l50pax8so16fane0
-drop table mark if exists
-drop table user if exists
-drop sequence hibernate_sequence if exists
-create sequence hibernate_sequence start with 1 increment by 1
-create table mark (id bigint not null, description varchar(255), resend boolean, score double, user_id bigint, primary key (id))
-create table user (id bigint not null, email varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
-alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
-alter table mark add constraint FKlqq420tc6l50pax8so16fane0 foreign key (user_id) references user
-INSERT INTO USER VALUES(1,'pruebadeemail@prueba.com','D\u00edaz','Pedro','$2a$10$GkhrKE8KW4/Fo33sZWw4t.5oyUtxRX.AcPf6LR2JXX4soE7M6uVa.','ROLE_STUDENT')
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
-COMMIT
-INSERT INTO USER VALUES(2,'admin@email.com','delSistema','Admin','$2a$10$8j3UazbujH9oK6Dp3Rf7/umuLKjoGeMIYVTKQYe69W0C9Ua0n3TIe','ROLE_ADMIN')
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 3
-COMMIT
-DISCONNECT
-/*C93*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C94*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C95*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C96*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C97*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C98*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C99*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C100*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C101*/SET SCHEMA PUBLIC
+/*C192*/SET SCHEMA PUBLIC
 DISCONNECT

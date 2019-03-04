@@ -4,10 +4,10 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import com.uniovi.entities.Mark;
+import com.uniovi.entities.Offer;
 import com.uniovi.entities.User;
 
-public class MarkAddFormValidator implements Validator {
+public class OfferAddFormValidator implements Validator {
 	
 	@Override
 	public boolean supports(Class<?> aClass) {
@@ -16,7 +16,7 @@ public class MarkAddFormValidator implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		Mark mark = (Mark) target;
+		Offer mark = (Offer) target;
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "dni", "Error.empty");
 		if (mark.getScore() <= 10 && mark.getScore() >= 0) {
 			errors.rejectValue("score", "Error.mark.add.score");

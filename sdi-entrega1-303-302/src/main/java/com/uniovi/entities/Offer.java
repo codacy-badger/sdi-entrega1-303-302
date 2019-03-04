@@ -7,32 +7,36 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Mark {
+public class Offer {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	private String name;
 	private String description;
+	private String picture;
 	private Boolean resend = false;
-	private Double score;
+	private Double price;
+	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	public Mark(Long id, String description, Double score) {
+	public Offer(Long id, String description, Double price) {
 		super();
 		this.id = id;
 		this.description = description;
-		this.score = score;
+		this.price = price;
 	}
 
-	public Mark(String description, Double score, User user) {
+	public Offer(String description, Double score, User user) {
 		super();
 		this.description = description;
-		this.score = score;
+		this.price = score;
 		this.user = user;
 	}
 
-	public Mark() {
+	public Offer() {
 	}
 
 	public Long getId() {
@@ -52,17 +56,17 @@ public class Mark {
 	}
 
 	public Double getScore() {
-		return score;
+		return price;
 	}
 
 	public void setScore(Double score) {
-		this.score = score;
+		this.price = score;
 	}
 
 	@Override
 
 	public String toString() {
-		return "Mark [id=" + id + ", description=" + description + ", score=" + score + "]";
+		return "Mark [id=" + id + ", description=" + description + ", score=" + price + "]";
 
 	}
 
@@ -73,10 +77,37 @@ public class Mark {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
 	public Boolean getResend() {
 		return resend;
-		}
-		public void setResend(Boolean resend) {
+	}
+
+	public void setResend(Boolean resend) {
 		this.resend = resend;
-		}
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+	
 }
