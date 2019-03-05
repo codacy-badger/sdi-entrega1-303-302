@@ -9,4 +9,8 @@ public class HomeController {
 	public String index() {
 		return "index";
 	}
+	@RequestMapping("/trolley")
+	public String trolley() {
+		return "trolley";
+	}
 }
