@@ -28,11 +28,11 @@ public class OffersService {
 	@Autowired
 	private OffersRepository offersRepository;
 
-	public List<Offer> getOffers() {
-		List<Offer> offers = new ArrayList<Offer>();
-		offersRepository.findAll().forEach(offers::add);
-		return offers;
-	}
+//	public Page<Offer> getOffers() {
+//		List<Offer> offers = new ArrayList<Offer>();
+//		offersRepository.findAll().forEach(offers::add);
+//		return offers;
+//	}
 
 	public Offer getOffer(Long id) {
 		Set<Offer> consultedList = (Set<Offer>) httpSession.getAttribute("consultedList");
@@ -67,7 +67,7 @@ public class OffersService {
 		if (user.getRole().equals("ROLE_USER")) {
 			offers = offersRepository.findAllByUser(pageable, user);
 		}
-		if (user.getRole().equals("ROLE_PROFESSOR")) {
+		if (user.getRole().equals("ROLE_ADMIN")) {
 			offers = getOffers(pageable);
 		}
 		return offers;
@@ -79,7 +79,7 @@ public class OffersService {
 		if (user.getRole().equals("ROLE_USER")) {
 			offers = offersRepository.searchByDescriptionNameAndUser(pageable, searchText, user);
 		}
-		if (user.getRole().equals("ROLE_PROFESSOR")) {
+		if (user.getRole().equals("ROLE_ADMIN")) {
 			offers = offersRepository.searchByDescriptionAndName(pageable, searchText);
 		}
 		return offers;

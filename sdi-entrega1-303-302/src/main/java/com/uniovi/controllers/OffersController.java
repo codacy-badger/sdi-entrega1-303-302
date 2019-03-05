@@ -25,8 +25,6 @@ import com.uniovi.services.UsersService;
 @Controller
 public class OffersController {
 	@Autowired
-	private HttpSession httpSession;
-	@Autowired
 	private UsersService usersService;
 	@Autowired // Inyectar el servicio
 	private OffersService offersService;
@@ -37,29 +35,31 @@ public class OffersController {
 		User user = usersService.getUserByEmail(Email);
 		Page<Offer> offers = offersService.getOffersForUser(pageable, user);
 		model.addAttribute("offerList", offers.getContent());
-		return "offer/list :: tableoffers";
+		return "offer/list :: tableOffers";
 	}
 
 	@RequestMapping(value = "/offer/add", method = RequestMethod.POST)
-	public String setoffer(@ModelAttribute Offer offer) {
+	public String setOffer(@ModelAttribute Offer offer, Principal principal) {
+		offer.setUser(usersService.getUserByEmail(principal.getName()));
 		offersService.addOffer(offer);
 		return "redirect:/offer/list";
 	}
 
 	@RequestMapping("/offer/details/{id}")
 	public String getDetail(Model model, @PathVariable Long id) {
+		System.out.println(id);
 		model.addAttribute("offer", offersService.getOffer(id));
 		return "offer/details";
 	}
 
 	@RequestMapping("/offer/delete/{id}")
-	public String deleteoffer(@PathVariable Long id) {
+	public String deleteOffer(@PathVariable Long id) {
 		offersService.deleteOffer(id);
 		return "redirect:/offer/list";
 	}
 
 	@RequestMapping(value = "/offer/add")
-	public String getoffer(Model model) {
+	public String getOffer(Model model) {
 		model.addAttribute("usersList", usersService.getUsers());
 		return "offer/add";
 	}
@@ -96,16 +96,18 @@ public class OffersController {
 	public String getList(Model model, Pageable pageable, Principal principal,
 			@RequestParam(value = "", required=false) String searchText){
 		
-	String Email = principal.getName(); // Email es el name de la autenticación
+	String Email = principal.getName(); 
 	User user = usersService.getUserByEmail(Email);
 	Page<Offer> offers = new PageImpl<Offer>(new LinkedList<Offer>());
+	
 	if (searchText != null && !searchText.isEmpty()) {
 	offers = offersService
 	.searchOffersByDescriptionAndNameForUser(pageable, searchText, user);
 	} else {
-		offers = offersService.getOffersForUser(pageable, user) ;
+		offers = offersService.getOffers(pageable);
 	}
-	model.addAttribute("offerList", offers.getContent()); model.addAttribute("page", offers);
+	model.addAttribute("offerList", offers.getContent()); 
+	model.addAttribute("page", offers);
 	return "offer/list";
 	}
 }

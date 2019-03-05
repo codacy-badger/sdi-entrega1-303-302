@@ -15,27 +15,27 @@
 			<a th:href="${'/user/details/' + #httpServletRequest.remoteUser}">Detalles
 				de Usuario</a>
 		</p>
-		<p>Notas del usuario</p>
+		<p>Ofertas del usuario</p>
 		<div class="table-responsive">
 			<table class="table table-hover">
 				<thead>
 					<tr>
 						<th class="col-md-1">id</th>
 						<th>Descripción</th>
-						<th>Puntuación</th>
+						<th>Precio</th>
 						<th class="col-md-1"></th>
 						<th class="col-md-1"></th>
 						<th class="col-md-1"></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="mark : ${markList}">
-						<td th:text="${mark.id}">1</td>
-						<td th:text="${mark.description}">Ejercicio 1</td>
-						<td th:text="${mark.score}">10</td>
-						<td><a th:href="${'/mark/details/' + mark.id}">detalles</a></td>
-						<td><a th:href="${'/mark/edit/' + mark.id}">modificar</a></td>
-						<td><a th:href="${'/mark/delete/' + mark.id}">eliminar</a></td>
+					<tr th:each="offer : ${offerList}">
+						<td th:text="${offer.id}">1</td>
+						<td th:text="${offer.description}">Ejercicio 1</td>
+						<td th:text="${offer.price}">10</td>
+						<td><a th:href="${'/offer/details/' + offer.id}">detalles</a></td>
+						<td><a th:href="${'/offer/edit/' + offer.id}">modificar</a></td>
+						<td><a th:href="${'/offer/delete/' + offer.id}">eliminar</a></td>
 					</tr>
 				</tbody>
 			</table>
