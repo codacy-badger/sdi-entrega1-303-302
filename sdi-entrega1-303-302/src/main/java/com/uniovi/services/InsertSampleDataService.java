@@ -22,13 +22,13 @@ public class InsertSampleDataService {
 
 	@PostConstruct
 	public void init() {
-		User user1 = new User("pruebadeemail@prueba.com", "Pedro", "Díaz");
-		user1.setPassword("123456");
-		user1.setRole(rolesService.getRoles()[0]);
-		usersService.addUser(user1);
-		User admin = new User("admin@email.com", "Admin", "delSistema");
-		admin.setPassword("admin");
-		admin.setRole(rolesService.getRoles()[1]);
-		usersService.addUser(admin);
+//		User user1 = new User("pruebadeemail@prueba.com", "Pedro", "Díaz");
+//		user1.setPassword("123456");
+//		user1.setRole(rolesService.getRoles()[0]);
+//		usersService.addUser(user1);
+//		User admin = new User("admin@email.com", "Admin", "delSistema");
+//		admin.setPassword("admin");
+//		admin.setRole(rolesService.getRoles()[1]);
+//		usersService.addUser(admin);
 	}
 }
