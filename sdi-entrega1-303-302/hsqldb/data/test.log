@@ -1,10 +1,26 @@
+/*C93*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C99*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C98*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C97*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C96*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C95*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C92*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C94*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C100*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C101*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C102*/SET SCHEMA PUBLIC
+DISCONNECT
 /*C103*/SET SCHEMA PUBLIC
-drop table offer if exists
-drop sequence hibernate_sequence if exists
-create sequence hibernate_sequence start with 1 increment by 1
-create table offer (id bigint not null, description varchar(255), name varchar(255), picture varchar(255), price double, resend boolean, user_id bigint, primary key (id))
-alter table offer add constraint FKo0rdvexlxmyakcvw8b5aqidlk foreign key (user_id) references user
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
 DISCONNECT
 /*C104*/SET SCHEMA PUBLIC
 DISCONNECT
@@ -25,13 +41,6 @@ DISCONNECT
 /*C112*/SET SCHEMA PUBLIC
 DISCONNECT
 /*C113*/SET SCHEMA PUBLIC
-alter table offer drop constraint FKo0rdvexlxmyakcvw8b5aqidlk
-drop table offer if exists
-drop sequence hibernate_sequence if exists
-create sequence hibernate_sequence start with 1 increment by 1
-create table offer (id bigint not null, description varchar(255), name varchar(255), picture varchar(255), price double, resend boolean, user_id bigint, primary key (id))
-alter table offer add constraint FKo0rdvexlxmyakcvw8b5aqidlk foreign key (user_id) references user
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
 DISCONNECT
 /*C114*/SET SCHEMA PUBLIC
 DISCONNECT
@@ -52,13 +61,6 @@ DISCONNECT
 /*C122*/SET SCHEMA PUBLIC
 DISCONNECT
 /*C123*/SET SCHEMA PUBLIC
-alter table offer drop constraint FKo0rdvexlxmyakcvw8b5aqidlk
-drop table offer if exists
-drop sequence hibernate_sequence if exists
-create sequence hibernate_sequence start with 1 increment by 1
-create table offer (id bigint not null, description varchar(255), name varchar(255), picture varchar(255), price double, resend boolean, user_id bigint, primary key (id))
-alter table offer add constraint FKo0rdvexlxmyakcvw8b5aqidlk foreign key (user_id) references user
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
 DISCONNECT
 /*C124*/SET SCHEMA PUBLIC
 DISCONNECT
@@ -79,12 +81,6 @@ DISCONNECT
 /*C132*/SET SCHEMA PUBLIC
 DISCONNECT
 /*C133*/SET SCHEMA PUBLIC
-alter table offer drop constraint FKo0rdvexlxmyakcvw8b5aqidlk
-drop table offer if exists
-drop sequence hibernate_sequence if exists
-create sequence hibernate_sequence start with 1 increment by 1
-create table offer (id bigint not null, description varchar(255), name varchar(255), picture varchar(255), price double, resend boolean, user_id bigint, primary key (id))
-alter table offer add constraint FKo0rdvexlxmyakcvw8b5aqidlk foreign key (user_id) references user
 DISCONNECT
 /*C134*/SET SCHEMA PUBLIC
 DISCONNECT
@@ -105,12 +101,6 @@ DISCONNECT
 /*C142*/SET SCHEMA PUBLIC
 DISCONNECT
 /*C143*/SET SCHEMA PUBLIC
-alter table offer drop constraint FKo0rdvexlxmyakcvw8b5aqidlk
-drop table offer if exists
-drop sequence hibernate_sequence if exists
-create sequence hibernate_sequence start with 1 increment by 1
-create table offer (id bigint not null, description varchar(255), name varchar(255), picture varchar(255), price double, resend boolean, user_id bigint, primary key (id))
-alter table offer add constraint FKo0rdvexlxmyakcvw8b5aqidlk foreign key (user_id) references user
 DISCONNECT
 /*C144*/SET SCHEMA PUBLIC
 DISCONNECT
@@ -131,12 +121,6 @@ DISCONNECT
 /*C152*/SET SCHEMA PUBLIC
 DISCONNECT
 /*C153*/SET SCHEMA PUBLIC
-alter table offer drop constraint FKo0rdvexlxmyakcvw8b5aqidlk
-drop table offer if exists
-drop sequence hibernate_sequence if exists
-create sequence hibernate_sequence start with 1 increment by 1
-create table offer (id bigint not null, description varchar(255), name varchar(255), picture varchar(255), price double, resend boolean, user_id bigint, primary key (id))
-alter table offer add constraint FKo0rdvexlxmyakcvw8b5aqidlk foreign key (user_id) references user
 DISCONNECT
 /*C154*/SET SCHEMA PUBLIC
 DISCONNECT
@@ -157,7 +141,6 @@ DISCONNECT
 /*C162*/SET SCHEMA PUBLIC
 DISCONNECT
 /*C163*/SET SCHEMA PUBLIC
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
 DISCONNECT
 /*C164*/SET SCHEMA PUBLIC
 DISCONNECT
@@ -216,4 +199,82 @@ DISCONNECT
 /*C191*/SET SCHEMA PUBLIC
 DISCONNECT
 /*C192*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C193*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C194*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C195*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C196*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C197*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C198*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C199*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C200*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C201*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C202*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C203*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C204*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C205*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C206*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C207*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C208*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C209*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C210*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C211*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C212*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C213*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C214*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C215*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C216*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C217*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C218*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C219*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C220*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C221*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C222*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C223*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C224*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C225*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C226*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C227*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C228*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C229*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C230*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C231*/SET SCHEMA PUBLIC
 DISCONNECT
