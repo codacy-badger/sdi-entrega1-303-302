@@ -12,7 +12,7 @@ public class Offer {
 	@GeneratedValue
 	private Long id;
 	
-	private String name;
+	private String title;
 	private String description;
 	private String picture;
 	private Boolean resend = false;
@@ -86,12 +86,12 @@ public class Offer {
 		this.resend = resend;
 	}
 
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String name) {
+		this.title = name;
 	}
 
 	public String getPicture() {
