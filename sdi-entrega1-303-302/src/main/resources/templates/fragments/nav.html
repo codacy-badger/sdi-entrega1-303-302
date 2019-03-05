@@ -26,7 +26,7 @@
 
 
 		<ul class="nav navbar-nav navbar-right">
-			<li>
+			<li sec:authorize="isAuthenticated()">
 			<a title="carrito" href="/trolley"><img src="/img/trolley.png" alt="carrito" /></a>
 			</li>
 			<li class="dropdown"><a id="btnLanguage" href="#"
