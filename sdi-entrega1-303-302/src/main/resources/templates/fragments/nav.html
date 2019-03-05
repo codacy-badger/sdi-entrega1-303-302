@@ -10,8 +10,8 @@
 					<span class="caret"></span>
 			</a>
 				<ul class="dropdown-menu">
-					<li sec:authorize="hasRole('ROLE_USER')"><a
-						href="/offer/add" th:text="#{add.offer.message}"></a></li>
+					<li sec:authorize="hasRole('ROLE_USER')"><a href="/offer/add"
+						th:text="#{add.offer.message}"></a></li>
 					<li><a href="/offer/list" th:text="#{see.offers.message}"></a></li>
 				</ul></li>
 			<li id="users-menu" class="dropdown"
@@ -23,7 +23,13 @@
 					<li><a href="/user/list" th:text="#{see.users.message}"></a></li>
 				</ul></li>
 		</ul>
+
+
 		<ul class="nav navbar-nav navbar-right">
+			<li class="carrito"><a href="/offer/list"> <img
+					th:src="@{/img/trolley.png}"
+					style="border: 0; float: top; margin-right: 15px" />
+			</a></li>
 			<li class="dropdown"><a id="btnLanguage" href="#"
 				class="dropdown-toggle" data-toggle="dropdown" role="button"
 				aria-haspopup="true" aria-expanded="false"> <span
