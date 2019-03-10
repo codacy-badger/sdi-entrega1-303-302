@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+
+<html lang="en"><head th:replace="fragments/head" />
+
+<body>
+
+	<nav th:replace="fragments/nav" />
+
+	<div class="container">
+
+		<h1 class="jumbotron">
+			<span sec:authentication="name"></span>'s Shopping Cart
+		</h1>
+
+		<div class="panel-default well"
+			th:each="offer : ${cartList}">
+			<div class="panel-heading">
+				<h1>
+					<a th:text="${offer.title}"
+						th:href="@{'/offer/details/' + ${offer.id}}">Nombre:</a>
+				</h1>
+				<h3 th:text="${offer.description}">Descripcion</h3>
+			</div>
+			<div class="row panel-body">
+				<div th:inline="text" class="col-md-2">precio:
+					[[${offer.price}]] $</div>
+				<a
+					th:href="@{'/cart/remove/{id}'(id=${offer.id})}"
+					class="col-md-1">
+					<button type="button" class="btn btn-primary" th:text="Remove">Eliminar del carrito</button>
+				</a>
+			</div>
+			<br></br>
+		</div>
+
+		<div class="row panel-body">
+			<h2 class="col-md-11" th:inline="text">Total: [[${total}]]</h2>
+			<a th:href="@{'/cart/checkout'}" class="col-md-1">
+				<button type="button" class="btn btn-danger" th:text="Checkout">Checkout</button>
+			</a>
+		</div>
+
+	</div>
+
+	<footer th:replace="fragments/footer" />
+
+</body>
+</html>

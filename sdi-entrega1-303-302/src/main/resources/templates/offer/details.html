@@ -14,7 +14,7 @@
 			<div class="panel-heading">Titulo</div>
 			<div class="panel-body" th:text="${offer.title}">28276</div>
 		</div>
-		<div  class="panel panel-default">
+		<div class="panel panel-default">
 			<div class="panel-heading">Imagen</div>
 			<img th:src="${offer.picture}" align="center">
 		</div>
@@ -26,8 +26,14 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">Precio</div>
 			<div class="panel-body" th:text="${offer.price}">100</div>
+
+			<a th:href="@{'/cart/add/{id}'(id=${offer.id})}"
+				class="col-md-1">
+				<button type="button" class="btn btn-primary" th:text="comprar">Comprar</button>
+			</a>
 		</div>
 	</div>
+
 
 	<footer th:replace="fragments/footer" />
 </body>
