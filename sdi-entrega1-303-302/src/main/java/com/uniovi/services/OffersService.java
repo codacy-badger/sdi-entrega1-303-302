@@ -89,4 +89,11 @@ public class OffersService {
 		Page<Offer> marks = offersRepository.findAll(pageable);
 		return marks;
 	}
+
+	public Page<Offer> getOffersByOthers(Pageable pageable, User user) {
+			Page<Offer> offers = new PageImpl<Offer>(new LinkedList<Offer>());
+			offers = offersRepository.findAllByOthers(pageable, user);
+
+	return offers;
+	}
 }

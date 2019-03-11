@@ -10,13 +10,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.uniovi.entities.Offer;
+import com.uniovi.entities.User;
 import com.uniovi.repositories.OffersRepository;
+import com.uniovi.repositories.UsersRepository;
 @Service
 @Transactional
 public class CartService {
 	
 	private OffersRepository offersRepository;
-
+	
+    private UsersRepository usersRepository;
+    
 	private List<Offer> articles = new ArrayList<>();
 	
 	@Autowired
@@ -42,9 +46,19 @@ public class CartService {
 		return new ArrayList<Offer>(articles);
 	}
 
-	public void checkout() {
+	public void checkout(User user) {
+		
 		for (Offer offer : articles) {
-			offersRepository.deleteById(offer.getId());
+			
+			
+			if(user.getBalance() - offer.getPrice() < 0) {
+				//throw new runtimeexception
+			}
+			else {
+				offersRepository.deleteById(offer.getId());
+				user.setBalance(user.getBalance()-offer.getPrice());
+			}
+		
 		}
 		articles.clear();
 	}

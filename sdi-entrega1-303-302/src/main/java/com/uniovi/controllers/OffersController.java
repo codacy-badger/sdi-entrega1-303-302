@@ -2,6 +2,7 @@ package com.uniovi.controllers;
 
 import java.security.Principal;
 import java.util.LinkedList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -99,15 +100,26 @@ public class OffersController {
 	String Email = principal.getName(); 
 	User user = usersService.getUserByEmail(Email);
 	Page<Offer> offers = new PageImpl<Offer>(new LinkedList<Offer>());
+
+	offers = offersService.getOffersByOthers(pageable, user);
 	
-	if (searchText != null && !searchText.isEmpty()) {
-	offers = offersService
-	.searchOffersByDescriptionAndNameForUser(pageable, searchText, user);
-	} else {
-		offers = offersService.getOffers(pageable);
-	}
 	model.addAttribute("offerList", offers.getContent()); 
 	model.addAttribute("page", offers);
 	return "offer/list";
+	
+	}
+	
+	@RequestMapping("/offer/mylist")
+	public String getMyList(Model model, Pageable pageable, Principal principal,
+			@RequestParam(value = "", required=false) String searchText){
+		
+	String Email = principal.getName(); 
+	User user = usersService.getUserByEmail(Email);
+	Page<Offer> offers = new PageImpl<Offer>(new LinkedList<Offer>());
+	
+	offers = offersService.getOffersForUser(pageable,user);
+	model.addAttribute("offerList", offers.getContent()); 
+	model.addAttribute("page", offers);
+	return "offer/mylist";
 	}
 }

@@ -1,17 +1,26 @@
 package com.uniovi.controllers;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.uniovi.entities.User;
 import com.uniovi.services.CartService;
 import com.uniovi.services.OffersService;
+import com.uniovi.services.UsersService;
 @Controller
 public class CartController {
+	@Autowired
 	private final CartService cartService;
+	@Autowired
 	private final OffersService offerService;
+	
+	@Autowired
+	private UsersService usersService;
 	
     @Autowired
     public CartController(CartService cartService, OffersService offersService) {
@@ -37,8 +46,10 @@ public class CartController {
     }
     
     @RequestMapping("/cart/checkout")
-    public String checkOut(Model model) {
-    	cartService.checkout();
+    public String checkOut(Principal principal, Model model) {
+    	String Email = principal.getName(); 
+    	User user = usersService.getUserByEmail(Email);
+    	cartService.checkout(user);
     	return "cart/final";
     }
     

@@ -12,7 +12,7 @@
 				<ul class="dropdown-menu">
 					<li sec:authorize="hasRole('ROLE_USER')"><a href="/offer/add"
 						th:text="#{add.offer.message}"></a></li>
-					<li><a href="/offer/list" th:text="#{see.offers.message}"></a>
+					<li><a href="/offer/mylist" th:text="#{see.offers.message}"></a>
 					</li>
 				</ul></li>
 			<li id="users-menu" class="dropdown"
@@ -23,6 +23,8 @@
 					<li><a href="/user/add" th:text="#{add.message}"></a></li>
 					<li><a href="/user/list" th:text="#{see.users.message}"></a></li>
 				</ul></li>
+			<li sec:authorize="isAuthenticated()"><a href="/offer/list"> Todas las ofertas
+			</a></li>
 		</ul>
 
 

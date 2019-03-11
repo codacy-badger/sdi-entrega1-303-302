@@ -22,6 +22,7 @@ public class User {
 	private String name;
 	private String lastName;
 	private String password;
+	private Double balance;
 	
 	@Transient // propiedad que no se almacena e la tabla.
 	private String passwordConfirm;
@@ -108,4 +109,22 @@ public class User {
 	public String getRole() {
 		return this.role;
 	}
+
+	public Double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(Double balance) {
+		this.balance = balance;
+	}
+
+	public Set<Offer> getOffers() {
+		return offers;
+	}
+
+	public void setOffers(Set<Offer> offers) {
+		this.offers = offers;
+	}
+	
+	
 }
