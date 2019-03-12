@@ -1,6 +1,7 @@
 package com.uniovi.controllers;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.uniovi.entities.Offer;
 import com.uniovi.entities.User;
 import com.uniovi.services.CartService;
 import com.uniovi.services.OffersService;
@@ -41,7 +43,9 @@ public class CartController {
     }
     @RequestMapping("/cart/list")
     public String getOffers(Model model) {
-    	model.addAttribute("cartList", cartService.getOffers());
+    	List<Offer> offer = cartService.getOffers();
+    		model.addAttribute("cartList", offer );
+    	
     	return "cart/list";
     }
     
