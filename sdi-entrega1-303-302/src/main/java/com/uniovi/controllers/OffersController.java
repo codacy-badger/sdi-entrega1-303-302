@@ -66,19 +66,27 @@ public class OffersController {
 	}
 
 	@RequestMapping(value = "/offer/edit/{id}")
-	public String getEdit(Model model, @PathVariable Long id) {
+	public String getEdit(Model model, @PathVariable Long id, Principal principal) {
+		User sesion = usersService.getUserByEmail(principal.getName());
+		Offer original = offersService.getOffer(id);
+		if(original.getUser().equals(sesion)) {
 		model.addAttribute("offer", offersService.getOffer(id));
 		model.addAttribute("usersList", usersService.getUsers());
 		return "offer/edit";
+		}
+		else {
+			return "offer/details/" + id;
+		}
 	}
 
 	@RequestMapping(value = "/offer/edit/{id}", method = RequestMethod.POST)
 	public String setEdit(Model model, @PathVariable Long id, @ModelAttribute Offer offer) {
-		Offer original = offersService.getOffer(id); // modificar solo score y description
-		original.setScore(offer.getScore());
+		Offer original = offersService.getOffer(id);
+		original.setPrice(offer.getPrice());
 		original.setDescription(offer.getDescription());
 		offersService.addOffer(original);
 		return "redirect:/offer/details/" + id;
+		
 	}
 
 

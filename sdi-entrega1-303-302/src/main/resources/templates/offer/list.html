@@ -42,7 +42,7 @@
 				<tbody>
 					<tr th:each="offer : ${offerList}">
 						<td th:text="${offer.id}">1</td>
-						<td th:text="${offer.name}">1</td>
+						<td th:text="${offer.title}">1</td>
 						<td th:text="${offer.description}">Ejercicio 1</td>
 						<td th:text="${offer.price}">10</td>
 						<td><a th:href="${'/offer/details/' + offer.id}">detalles</a></td>

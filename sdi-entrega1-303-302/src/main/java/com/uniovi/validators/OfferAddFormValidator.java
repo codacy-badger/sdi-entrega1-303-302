@@ -18,7 +18,7 @@ public class OfferAddFormValidator implements Validator {
 	public void validate(Object target, Errors errors) {
 		Offer mark = (Offer) target;
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "dni", "Error.empty");
-		if (mark.getScore() <= 10 && mark.getScore() >= 0) {
+		if (mark.getPrice() <= 0) {
 			errors.rejectValue("score", "Error.mark.add.score");
 		}
 	}

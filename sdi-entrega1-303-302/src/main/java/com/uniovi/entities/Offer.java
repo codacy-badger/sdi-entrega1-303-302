@@ -55,14 +55,6 @@ public class Offer {
 		this.description = description;
 	}
 
-	public Double getScore() {
-		return price;
-	}
-
-	public void setScore(Double score) {
-		this.price = score;
-	}
-
 	@Override
 
 	public String toString() {
