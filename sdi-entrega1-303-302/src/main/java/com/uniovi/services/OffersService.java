@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import com.uniovi.entities.Offer;
 import com.uniovi.entities.User;
 import com.uniovi.repositories.OffersRepository;
+import com.uniovi.repositories.PurchasesRepository;
 
 @Service
 public class OffersService {
@@ -27,6 +28,7 @@ public class OffersService {
 	private HttpSession httpSession;
 	@Autowired
 	private OffersRepository offersRepository;
+
 
 //	public Page<Offer> getOffers() {
 //		List<Offer> offers = new ArrayList<Offer>();

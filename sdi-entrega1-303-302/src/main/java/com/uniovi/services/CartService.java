@@ -10,23 +10,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.uniovi.entities.Offer;
+import com.uniovi.entities.Purchase;
 import com.uniovi.entities.User;
 import com.uniovi.repositories.OffersRepository;
+import com.uniovi.repositories.PurchasesRepository;
 import com.uniovi.repositories.UsersRepository;
+
 @Service
 @Transactional
 public class CartService {
-	
-	private OffersRepository offersRepository;
-	
-    private UsersRepository usersRepository;
-    
-	private List<Offer> articles = new ArrayList<>();
-	
 	@Autowired
-	public CartService(OffersRepository offersRepository) {
-		this.offersRepository = offersRepository;
-	}
+	private OffersRepository offersRepository;
+	@Autowired
+	private UsersService usersService;
+	@Autowired
+	private PurchasesService purchasesService;
+
+	private List<Offer> articles = new ArrayList<>();
 
 	public void addOffer(Long id) {
 		Offer offer = offersRepository.findById(id).get();
@@ -47,18 +47,27 @@ public class CartService {
 	}
 
 	public void checkout(User user) {
-		
+		double price = 0.0;
 		for (Offer offer : articles) {
-			
-			
-			if(user.getBalance() - offer.getPrice() < 0) {
-				//throw new runtimeexception
-			}
-			else {
+			price += offer.getPrice();
+		}
+		if (user.getBalance() < price) {
+			// throw new runtimeexception
+		} else {
+			for (Offer offer : articles) {
 				offersRepository.deleteById(offer.getId());
-				user.setBalance(user.getBalance()-offer.getPrice());
+				user.setBalance(user.getBalance() - offer.getPrice());
+				Purchase purchase = new Purchase();
+				purchase.setTitle(offer.getTitle());
+				purchase.setDescription(offer.getDescription());
+				purchase.setPrice(offer.getPrice());
+				purchase.setPicture(offer.getPicture());
+				purchase.setUser(user);
+				purchasesService.addPurchase(purchase);
+				User vendedor = offer.getUser();
+				vendedor.setBalance(vendedor.getBalance() + offer.getPrice());
 			}
-		
+
 		}
 		articles.clear();
 	}
