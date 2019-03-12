@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
-
-<html lang="en"><head th:replace="fragments/head" />
+<html lang="en">
+<head th:replace="fragments/head" />
 
 <body>
 
@@ -13,8 +13,7 @@
 			<span sec:authentication="name"></span>'s Shopping Cart
 		</h1>
 
-		<div class="panel-default well"
-			th:each="offer : ${cartList}">
+		<div class="panel-default well" th:each="offer : ${cartList}">
 			<div class="panel-heading">
 				<h1>
 					<a th:text="${offer.title}"
@@ -25,16 +24,15 @@
 			<div class="row panel-body">
 				<div th:inline="text" class="col-md-2">precio:
 					[[${offer.price}]] $</div>
-				<a
-					th:href="@{'/cart/remove/{id}'(id=${offer.id})}"
-					class="col-md-1">
-					<button type="button" class="btn btn-primary" th:text="Remove">Eliminar del carrito</button>
+				<a th:href="@{'/cart/remove/{id}'(id=${offer.id})}" class="col-md-1">
+					<button type="button" class="btn btn-primary" th:text="Remove">Eliminar
+						del carrito</button>
 				</a>
 			</div>
 			<br></br>
 		</div>
 
-		<div class="row panel-body">
+		<div th:if="${cartList != null && cartList.length > 0}">
 			<h2 class="col-md-11" th:inline="text">Total: [[${total}]]</h2>
 			<a th:href="@{'/cart/checkout'}" class="col-md-1">
 				<button type="button" class="btn btn-danger" th:text="Checkout">Checkout</button>

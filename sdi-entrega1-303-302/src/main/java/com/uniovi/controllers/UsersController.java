@@ -1,6 +1,12 @@
 package com.uniovi.controllers;
 
+import java.security.Principal;
+import java.util.LinkedList;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -11,8 +17,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.uniovi.entities.Offer;
 import com.uniovi.entities.User;
+import com.uniovi.services.OffersService;
 import com.uniovi.services.RolesService;
 import com.uniovi.services.SecurityService;
 import com.uniovi.services.UsersService;
@@ -20,7 +29,7 @@ import com.uniovi.validators.SignUpFormValidator;
 
 @Controller
 public class UsersController {
-	@Autowired 
+	@Autowired
 	private RolesService rolesService;
 	@Autowired
 	private SecurityService securityService;
@@ -28,6 +37,8 @@ public class UsersController {
 	private UsersService usersService;
 	@Autowired
 	private SignUpFormValidator signUpFormValidator;
+	@Autowired
+	private OffersService offersService;
 
 	@RequestMapping("/user/list")
 	public String getListado(Model model) {
@@ -100,14 +111,23 @@ public class UsersController {
 	}
 
 	@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
-	public String home(Model model) {
+	public String home(Model model, Pageable pageable, Principal principal,
+			@RequestParam(value = "", required = false) String searchText) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String Email = auth.getName();
-		if(Email.equals("admin@email.com")) {
+		if (Email.equals("admin@email.com")) {
 			return "admin";
+		} else {
+			User user = usersService.getUserByEmail(Email);
+			Page<Offer> offers = new PageImpl<Offer>(new LinkedList<Offer>());
+
+			offers = offersService.getOffersByOthers(pageable, user);
+
+			model.addAttribute("offerList", offers.getContent());
+			model.addAttribute("page", offers);
+			User activeUser = usersService.getUserByEmail(Email);
+			model.addAttribute("markList", activeUser.getMarks());
+			return "home";
 		}
-		User activeUser = usersService.getUserByEmail(Email);
-		model.addAttribute("markList", activeUser.getMarks());
-		return "home";
 	}
 }

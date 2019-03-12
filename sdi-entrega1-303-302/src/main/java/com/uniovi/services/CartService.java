@@ -64,7 +64,8 @@ public class CartService {
 				purchase.setPicture(offer.getPicture());
 				purchase.setUser(user);
 				purchasesService.addPurchase(purchase);
-				User vendedor = offer.getUser();
+				User vendedor = usersService.getUserByEmail(offer.getUser().getEmail());
+				System.out.println(vendedor.getName());
 				vendedor.setBalance(vendedor.getBalance() + offer.getPrice());
 			}
 
