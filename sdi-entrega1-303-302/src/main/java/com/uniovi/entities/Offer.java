@@ -19,6 +19,7 @@ public class Offer {
 	private String picture;
 	private Boolean resend = false;
 	private Double price;
+	private Boolean special = false;
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
@@ -102,6 +103,14 @@ public class Offer {
 
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+
+	public Boolean getSpecial() {
+		return special;
+	}
+
+	public void setSpecial(Boolean special) {
+		this.special = special;
 	}
 	
 }

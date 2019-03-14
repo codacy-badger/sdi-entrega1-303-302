@@ -54,6 +54,7 @@ public class OffersService {
 	public void deleteOffer(Long id) {
 		offersRepository.deleteById(id);
 	}
+	
 
 	public void setOfferResend(boolean revised, Long id) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -63,6 +64,16 @@ public class OffersService {
 			offersRepository.updateResend(revised, id);
 		}
 	}
+	
+	public void setOfferSpecial(boolean bool, Long id) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String email = auth.getName();
+		Offer mark = offersRepository.findById(id).get();
+		if (mark.getUser().getEmail().equals(email)) {
+			offersRepository.setSpecial(bool, id);
+		}
+	}
+
 
 	public Page<Offer> getOffersForUser(Pageable pageable, User user) {
 		Page<Offer> offers = new PageImpl<Offer>(new LinkedList<Offer>());
@@ -98,4 +109,12 @@ public class OffersService {
 
 	return offers;
 	}
+	
+	public Page<Offer> getSpecialOffersByOthers(Pageable pageable, User user) {
+		Page<Offer> offers = new PageImpl<Offer>(new LinkedList<Offer>());
+		offers = offersRepository.findSpecialsByOthers(pageable, user);
+
+		return offers;
+	}
+	
 }

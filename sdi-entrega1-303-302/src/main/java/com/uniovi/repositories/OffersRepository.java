@@ -24,6 +24,9 @@ public interface OffersRepository extends CrudRepository<Offer, Long> {
 	
 	@Query("SELECT r FROM Offer r WHERE r.user <> ?1 ORDER BY r.id ASC ")
 	Page<Offer> findAllByOthers(Pageable pageable, User user);
+	
+	@Query("SELECT r FROM Offer r WHERE r.user <> ?1 and r.special<>0 ORDER BY r.id ASC ")
+	Page<Offer> findSpecialsByOthers(Pageable pageable, User user);
 
 
 	@Query("SELECT r FROM Offer r")
@@ -42,4 +45,9 @@ public interface OffersRepository extends CrudRepository<Offer, Long> {
 
 	@Query("SELECT r FROM Offer r WHERE r.user = ?1 ORDER BY r.id ASC ")
 	List<Offer> findAllByUser(User user);
+	
+	@Modifying
+	@Transactional
+	@Query("UPDATE Offer SET special=?1 where id=?2")
+	void setSpecial(Boolean bool, Long id);
 }

@@ -64,7 +64,7 @@ public class OffersController {
 
 	@RequestMapping("/offer/delete/{id}")
 	public String deleteOffer(@PathVariable Long id) {
-		offersService.deleteOffer(id);
+		offersService.deleteOffer(id);		
 		return "redirect:/offer/list";
 	}
 
@@ -115,6 +115,18 @@ public class OffersController {
 		return "redirect:/offer/list";
 	}
 	
+	@RequestMapping(value = "/offer/{id}/special", method = RequestMethod.GET)
+	public String setSpecialTrue(Model model, @PathVariable Long id) {
+		offersService.setOfferSpecial(true,id); 
+		return "redirect:/offer/list";
+	}
+
+	@RequestMapping(value = "/offer/{id}/nospecial", method = RequestMethod.GET)
+	public String setSpecialFalse(Model model, @PathVariable Long id) {
+		offersService.setOfferSpecial(false,id); 
+		return "redirect:/offer/list";
+	}
+	
 	@RequestMapping("/offer/list")
 	public String getList(Model model, Pageable pageable, Principal principal,
 			@RequestParam(value = "", required=false) String searchText){
@@ -143,5 +155,21 @@ public class OffersController {
 	model.addAttribute("offerList", offers.getContent()); 
 	model.addAttribute("page", offers);
 	return "offer/mylist";
+	}
+	
+	@RequestMapping("/offer/speciallist")
+	public String getSpecialList(Model model, Pageable pageable, Principal principal,
+			@RequestParam(value = "", required=false) String searchText){
+		
+	String Email = principal.getName(); 
+	User user = usersService.getUserByEmail(Email);
+	Page<Offer> offers = new PageImpl<Offer>(new LinkedList<Offer>());
+
+	offers = offersService.getSpecialOffersByOthers(pageable, user);
+	
+	model.addAttribute("offerList", offers.getContent()); 
+	model.addAttribute("page", offers);
+	return "offer/list";
+	
 	}
 }
