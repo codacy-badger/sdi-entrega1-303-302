@@ -14,28 +14,37 @@
 				<label class="control-label col-sm-2" for="title">Titulo:</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="title"
-						placeholder="Opel Corsa" required="true" />
+						placeholder="Opel Corsa" required="true" /> <span
+						class="text-danger" th:if="${#fields.hasErrors('title')}"
+						th:errors="*{title}">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="description">Descripcion:</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="description"
-						placeholder="Vendo Opel Corsa" required="true" />
+						placeholder="Vendo Opel Corsa" required="true" /> <span
+						class="text-danger" th:if="${#fields.hasErrors('description')}"
+						th:errors="*{description}">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="pwd">Precio:</label>
 				<div class="col-sm-10">
 					<input type="number" class="form-control" name="price"
-						placeholder="En euros" required="true" />
+						placeholder="En euros" required="true" /> <span
+						class="text-danger" th:if="${#fields.hasErrors('price')}"
+						th:errors="*{price}">
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="picture">URL Imagen principal:</label>
+				<label class="control-label col-sm-2" for="picture">URL
+					Imagen principal:</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="picture"
-						placeholder="http://xxxxxxx" required="true" />
+						placeholder="http://xxxxxxx" required="true" /> <span
+						class="text-danger" th:if="${#fields.hasErrors('picture')}"
+						th:errors="*{picture}">
 				</div>
 			</div>
 			<div class="form-group">
