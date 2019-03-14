@@ -94,7 +94,7 @@ public class OffersController {
 		Offer original = offersService.getOffer(id);
 		offerEditFormValidator.validate(offer, result);
 		if (result.hasErrors()) {
-			return "offer/list";
+			return "offer/edit";
 		}
 		original.setPrice(offer.getPrice());
 		original.setDescription(offer.getDescription());
