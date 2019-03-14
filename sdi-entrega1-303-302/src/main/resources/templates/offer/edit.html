@@ -9,20 +9,45 @@
 	<div class="container">
 		<h2>Editar Oferta</h2>
 		<form class="form-horizontal" method="post"
-			th:action="${'/offer/edit/' + offer.id}">
+			th:action="${'/offer/edit/' + offer.id}" th:object="${offer}">
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="title">Titulo:</label>
+				<div class="col-sm-10">
+					<input th:value="${offer.title}" type="text" class="form-control"
+						name="title" placeholder="Ejemplo Ejercicio 1" required="true" />
+						<span class="text-danger" th:if="${#fields.hasErrors('title')}"
+						th:errors="*{title}">
+				</div>
+			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="description">Descripción:</label>
 				<div class="col-sm-10">
 					<input th:value="${offer.description}" type="text"
 						class="form-control" name="description"
 						placeholder="Ejemplo Ejercicio 1" required="true" />
+						<span
+						class="text-danger" th:if="${#fields.hasErrors('description')}"
+						th:errors="*{description}">
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="pwd">precio:</label>
+				<label class="control-label col-sm-2" for="price">precio:</label>
 				<div class="col-sm-10">
 					<input th:value="${offer.price}" type="number" class="form-control"
-						name="price" placeholder="Enetre 0 y 10" required="true" />
+						name="price" placeholder="Precio positivo" required="true" />
+						<span
+						class="text-danger" th:if="${#fields.hasErrors('price')}"
+						th:errors="*{price}">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="picture">URL
+					Imagen principal:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="picture"
+						placeholder="http://xxxxxxx" required="true" /> <span
+						class="text-danger" th:if="${#fields.hasErrors('picture')}"
+						th:errors="*{picture}">
 				</div>
 			</div>
 			<div class="form-group">

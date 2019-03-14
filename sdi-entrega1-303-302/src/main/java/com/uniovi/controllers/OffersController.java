@@ -21,6 +21,7 @@ import com.uniovi.entities.User;
 import com.uniovi.services.OffersService;
 import com.uniovi.services.UsersService;
 import com.uniovi.validators.OfferAddFormValidator;
+import com.uniovi.validators.OfferEditFormValidator;
 
 @Controller
 public class OffersController {
@@ -30,6 +31,8 @@ public class OffersController {
 	private OffersService offersService;
 	@Autowired
 	private OfferAddFormValidator offerAddFormValidator;
+	@Autowired
+	private OfferEditFormValidator offerEditFormValidator;
 
 	@RequestMapping("/offer/list/update")
 	public String updateList(Model model, Pageable pageable, Principal principal) {
@@ -77,7 +80,7 @@ public class OffersController {
 		User sesion = usersService.getUserByEmail(principal.getName());
 		Offer original = offersService.getOffer(id);
 		if(original.getUser().equals(sesion)) {
-		model.addAttribute("offer", offersService.getOffer(id));
+		model.addAttribute("offer", original);
 		model.addAttribute("usersList", usersService.getUsers());
 		return "offer/edit";
 		}
@@ -87,15 +90,18 @@ public class OffersController {
 	}
 
 	@RequestMapping(value = "/offer/edit/{id}", method = RequestMethod.POST)
-	public String setEdit(Model model, @PathVariable Long id, @ModelAttribute Offer offer) {
+	public String setEdit(Model model, @PathVariable Long id, @ModelAttribute Offer offer, BindingResult result) {
 		Offer original = offersService.getOffer(id);
+		offerEditFormValidator.validate(offer, result);
+		if (result.hasErrors()) {
+			return "offer/list";
+		}
 		original.setPrice(offer.getPrice());
 		original.setDescription(offer.getDescription());
 		offersService.addOffer(original);
 		return "redirect:/offer/details/" + id;
 		
 	}
-
 
 	@RequestMapping(value = "/offer/{id}/resend", method = RequestMethod.GET)
 	public String setResendTrue(Model model, @PathVariable Long id) {
@@ -108,6 +114,7 @@ public class OffersController {
 		offersService.setOfferResend(false, id);
 		return "redirect:/offer/list";
 	}
+	
 	@RequestMapping("/offer/list")
 	public String getList(Model model, Pageable pageable, Principal principal,
 			@RequestParam(value = "", required=false) String searchText){
