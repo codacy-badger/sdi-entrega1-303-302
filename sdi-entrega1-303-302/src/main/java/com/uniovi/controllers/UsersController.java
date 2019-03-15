@@ -25,7 +25,6 @@ import com.uniovi.services.OffersService;
 import com.uniovi.services.RolesService;
 import com.uniovi.services.SecurityService;
 import com.uniovi.services.UsersService;
-import com.uniovi.validators.LoginModel;
 import com.uniovi.validators.SignUpFormValidator;
 
 @Controller
