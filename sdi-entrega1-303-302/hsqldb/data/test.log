@@ -1,44 +1,87 @@
-/*C153*/SET SCHEMA PUBLIC
+/*C1*/SET SCHEMA SYSTEM_LOBS
+INSERT INTO BLOCKS VALUES(0,2147483647,0)
+COMMIT
+/*C3*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C154*/SET SCHEMA PUBLIC
+/*C4*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C155*/SET SCHEMA PUBLIC
+/*C5*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C156*/SET SCHEMA PUBLIC
+/*C6*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C157*/SET SCHEMA PUBLIC
+/*C2*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C158*/SET SCHEMA PUBLIC
+/*C7*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C159*/SET SCHEMA PUBLIC
+/*C8*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C160*/SET SCHEMA PUBLIC
+/*C9*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C161*/SET SCHEMA PUBLIC
+/*C10*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C162*/SET SCHEMA PUBLIC
+/*C11*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C163*/SET SCHEMA PUBLIC
+/*C12*/SET SCHEMA PUBLIC
+drop table offer if exists
+drop table purchase if exists
+drop table user if exists
+drop sequence hibernate_sequence if exists
+create sequence hibernate_sequence start with 1 increment by 1
+create table offer (id bigint not null, description varchar(255), picture varchar(255), price double, resend boolean, special boolean, title varchar(255), user_id bigint, primary key (id))
+create table purchase (id bigint not null, description varchar(255), picture varchar(255), price double, resend boolean, title varchar(255), user_id bigint, primary key (id))
+create table user (id bigint not null, balance double, email varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
+alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
+alter table offer add constraint FKo0rdvexlxmyakcvw8b5aqidlk foreign key (user_id) references user
+alter table purchase add constraint FK86i0stm7cqsglqptdvjij1k3m foreign key (user_id) references user
+INSERT INTO USER VALUES(1,100.0E0,'123@gmail.com','12345','12345','$2a$10$dPNFkWiywgq765qj/LDcheUNFaMGlr7v4g779SwX7zWGgUx3LiRA2','ROLE_USER')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
+COMMIT
+/*C20*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C164*/SET SCHEMA PUBLIC
+/*C18*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C165*/SET SCHEMA PUBLIC
+/*C12*/DISCONNECT
+/*C19*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C166*/SET SCHEMA PUBLIC
+/*C15*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C167*/SET SCHEMA PUBLIC
+/*C16*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C168*/SET SCHEMA PUBLIC
+/*C21*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C169*/SET SCHEMA PUBLIC
+/*C13*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C170*/SET SCHEMA PUBLIC
+/*C14*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C171*/SET SCHEMA PUBLIC
+/*C17*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C172*/SET SCHEMA PUBLIC
+/*C22*/SET SCHEMA PUBLIC
+INSERT INTO OFFER VALUES(2,'opel','https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjyg8iW6IPhAhUBzIUKHczhDhIQjRx6BAgBEAU&url=https%3A%2F%2Fwww.opel.es%2F&psig=AOvVaw2noDLC-Xr1XAbx49bpINRr&ust=1552727861257712',10.0E0,FALSE,FALSE,'opel',1)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 3
+COMMIT
+INSERT INTO OFFER VALUES(3,'534','https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjyg8iW6IPhAhUBzIUKHczhDhIQjRx6BAgBEAU&url=https%3A%2F%2Fwww.opel.es%2F&psig=AOvVaw2noDLC-Xr1XAbx49bpINRr&ust=1552727861257712',4.535E13,FALSE,FALSE,'354',1)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 4
+COMMIT
+/*C26*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C173*/SET SCHEMA PUBLIC
+/*C28*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C31*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C23*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C25*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C22*/DISCONNECT
+/*C24*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C29*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C30*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C27*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C32*/SET SCHEMA PUBLIC
 alter table offer drop constraint FKo0rdvexlxmyakcvw8b5aqidlk
 alter table purchase drop constraint FK86i0stm7cqsglqptdvjij1k3m
 drop table offer if exists
@@ -46,534 +89,57 @@ drop table purchase if exists
 drop table user if exists
 drop sequence hibernate_sequence if exists
 create sequence hibernate_sequence start with 1 increment by 1
-create table offer (id bigint not null, description varchar(255), picture varchar(255), price double, resend boolean, title varchar(255), user_id bigint, primary key (id))
+create table offer (id bigint not null, description varchar(255), picture varchar(255), price double, resend boolean, special boolean, title varchar(255), user_id bigint, primary key (id))
 create table purchase (id bigint not null, description varchar(255), picture varchar(255), price double, resend boolean, title varchar(255), user_id bigint, primary key (id))
 create table user (id bigint not null, balance double, email varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
 alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
 alter table offer add constraint FKo0rdvexlxmyakcvw8b5aqidlk foreign key (user_id) references user
 alter table purchase add constraint FK86i0stm7cqsglqptdvjij1k3m foreign key (user_id) references user
-INSERT INTO USER VALUES(1,100.0E0,'vendedor@prueba.com','Mucho','Vendedor','$2a$10$VIItROPhvrrtnhVATfV8GuYszUxNN1z4PFwo.RK1.XkqklrgUg1.W','ROLE_USER')
+INSERT INTO USER VALUES(1,NULL,'pruebadeemail@prueba.com','D\u00edaz','Pedro','$2a$10$v86Pv7r0VwalKIqqB5U4MO5GSUntfApPOZxiiBtnBWP0fFYKCCfuG','ROLE_USER')
 ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
 COMMIT
-DISCONNECT
-/*C174*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C175*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C176*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C177*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C178*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C179*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C180*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C181*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C182*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C183*/SET SCHEMA PUBLIC
-alter table offer drop constraint FKo0rdvexlxmyakcvw8b5aqidlk
-alter table purchase drop constraint FK86i0stm7cqsglqptdvjij1k3m
-drop table offer if exists
-drop table purchase if exists
-drop table user if exists
-drop sequence hibernate_sequence if exists
-create sequence hibernate_sequence start with 1 increment by 1
-create table offer (id bigint not null, description varchar(255), picture varchar(255), price double, resend boolean, title varchar(255), user_id bigint, primary key (id))
-create table purchase (id bigint not null, description varchar(255), picture varchar(255), price double, resend boolean, title varchar(255), user_id bigint, primary key (id))
-create table user (id bigint not null, balance double, email varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
-alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
-alter table offer add constraint FKo0rdvexlxmyakcvw8b5aqidlk foreign key (user_id) references user
-alter table purchase add constraint FK86i0stm7cqsglqptdvjij1k3m foreign key (user_id) references user
-INSERT INTO USER VALUES(1,100.0E0,'vendedor@prueba.com','Prueba','Vendedor','$2a$10$JDE01wwQxsDGuciVNz0xQ.ZyyBIeQUImMwyT/KEpOZis7SArJtiqe','ROLE_USER')
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
-COMMIT
-DISCONNECT
-/*C184*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C185*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C186*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C187*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C188*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C189*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C190*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C191*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C192*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C193*/SET SCHEMA PUBLIC
-alter table offer drop constraint FKo0rdvexlxmyakcvw8b5aqidlk
-alter table purchase drop constraint FK86i0stm7cqsglqptdvjij1k3m
-drop table offer if exists
-drop table purchase if exists
-drop table user if exists
-drop sequence hibernate_sequence if exists
-create sequence hibernate_sequence start with 1 increment by 1
-create table offer (id bigint not null, description varchar(255), picture varchar(255), price double, resend boolean, title varchar(255), user_id bigint, primary key (id))
-create table purchase (id bigint not null, description varchar(255), picture varchar(255), price double, resend boolean, title varchar(255), user_id bigint, primary key (id))
-create table user (id bigint not null, balance double, email varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
-alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
-alter table offer add constraint FKo0rdvexlxmyakcvw8b5aqidlk foreign key (user_id) references user
-alter table purchase add constraint FK86i0stm7cqsglqptdvjij1k3m foreign key (user_id) references user
-INSERT INTO USER VALUES(1,100.0E0,'vendedor@prueba.com','vende','vendedor','$2a$10$n6oxCU0kFUGaqCrIB2ION.hDfdBRRtxEjyATdwpUxeNbBp1DcNZH2','ROLE_USER')
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
-COMMIT
-DISCONNECT
-/*C194*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C195*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C196*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C197*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C198*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C199*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C200*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C201*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C202*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C203*/SET SCHEMA PUBLIC
-alter table offer drop constraint FKo0rdvexlxmyakcvw8b5aqidlk
-alter table purchase drop constraint FK86i0stm7cqsglqptdvjij1k3m
-drop table offer if exists
-drop table purchase if exists
-drop table user if exists
-drop sequence hibernate_sequence if exists
-create sequence hibernate_sequence start with 1 increment by 1
-create table offer (id bigint not null, description varchar(255), picture varchar(255), price double, resend boolean, title varchar(255), user_id bigint, primary key (id))
-create table purchase (id bigint not null, description varchar(255), picture varchar(255), price double, resend boolean, title varchar(255), user_id bigint, primary key (id))
-create table user (id bigint not null, balance double, email varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
-alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
-alter table offer add constraint FKo0rdvexlxmyakcvw8b5aqidlk foreign key (user_id) references user
-alter table purchase add constraint FK86i0stm7cqsglqptdvjij1k3m foreign key (user_id) references user
-INSERT INTO USER VALUES(1,100.0E0,'vendedor@prueba.com','vendedor','Vendedor','$2a$10$o0SRWdVq.1BwsZFDV8D30O3hxiwZw.YYIO1u7VDpzI03U4Ba3ELOO','ROLE_USER')
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
-COMMIT
-DISCONNECT
-/*C204*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C205*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C206*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C207*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C208*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C209*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C210*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C211*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C212*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C213*/SET SCHEMA PUBLIC
-INSERT INTO OFFER VALUES(2,'a','a',-1.0E0,FALSE,'asmdkasmkl',1)
+INSERT INTO USER VALUES(2,NULL,'admin@email.com','delSistema','Admin','$2a$10$PSAj9OAp6oufNfOXw9R7WuaJvrF2DMKhUkR8XmFqVXwfVEXwFo2Xa','ROLE_ADMIN')
 ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 3
 COMMIT
 DISCONNECT
-/*C214*/SET SCHEMA PUBLIC
+/*C41*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C215*/SET SCHEMA PUBLIC
+/*C37*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C216*/SET SCHEMA PUBLIC
+/*C36*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C217*/SET SCHEMA PUBLIC
+/*C35*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C218*/SET SCHEMA PUBLIC
+/*C34*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C219*/SET SCHEMA PUBLIC
+/*C33*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C220*/SET SCHEMA PUBLIC
+/*C40*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C221*/SET SCHEMA PUBLIC
+/*C38*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C222*/SET SCHEMA PUBLIC
+/*C39*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C232*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C231*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C230*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C229*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C228*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C227*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C226*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C225*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C224*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C223*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C233*/SET SCHEMA PUBLIC
-INSERT INTO OFFER VALUES(3,'a','a',1.0E0,FALSE,'a',1)
+/*C42*/SET SCHEMA PUBLIC
+alter table offer drop constraint FKo0rdvexlxmyakcvw8b5aqidlk
+alter table purchase drop constraint FK86i0stm7cqsglqptdvjij1k3m
+drop table offer if exists
+drop table purchase if exists
+drop table user if exists
+drop sequence hibernate_sequence if exists
+create sequence hibernate_sequence start with 1 increment by 1
+create table offer (id bigint not null, description varchar(255), picture varchar(255), price double, resend boolean, special boolean, title varchar(255), user_id bigint, primary key (id))
+create table purchase (id bigint not null, description varchar(255), picture varchar(255), price double, resend boolean, title varchar(255), user_id bigint, primary key (id))
+create table user (id bigint not null, balance double, email varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
+alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
+alter table offer add constraint FKo0rdvexlxmyakcvw8b5aqidlk foreign key (user_id) references user
+alter table purchase add constraint FK86i0stm7cqsglqptdvjij1k3m foreign key (user_id) references user
+INSERT INTO USER VALUES(1,NULL,'pruebadeemail@prueba.com','D\u00edaz','Pedro','$2a$10$RdZ.YM8BRkgH6hRXdpIfLeXd3L9kstGVYUxZRASOe391/DqckxqAG','ROLE_USER')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
+COMMIT
+INSERT INTO USER VALUES(2,NULL,'prueba@prueba.com','D\u00edaz','Pedro','$2a$10$dBEBgEqKtokdU0YGkY.BCOoCxag8LWef.OqxaxcLhDN/aXL3vgP5G','ROLE_USER')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 3
+COMMIT
+INSERT INTO USER VALUES(3,NULL,'admin@email.com','delSistema','Admin','$2a$10$afi0YeTfZJ3uulMSacJKoOdSnOT9.L2BZZNGxj4XAz3TmPDmJjK0C','ROLE_ADMIN')
 ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 4
 COMMIT
-DISCONNECT
-/*C234*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C235*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C236*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C237*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C238*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C239*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C240*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C241*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C242*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C243*/SET SCHEMA PUBLIC
-INSERT INTO OFFER VALUES(4,'a','a',-1.0E0,FALSE,'a',1)
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 5
-COMMIT
-DISCONNECT
-/*C244*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C245*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C246*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C247*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C248*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C249*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C250*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C251*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C252*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C253*/SET SCHEMA PUBLIC
-INSERT INTO OFFER VALUES(5,'asas','http://a.com',10.0E0,FALSE,'asada',1)
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 6
-COMMIT
-DISCONNECT
-/*C254*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C255*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C256*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C257*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C258*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C259*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C260*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C261*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C262*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C263*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C264*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C265*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C266*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C267*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C268*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C269*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C270*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C271*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C272*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C273*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C274*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C275*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C276*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C277*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C278*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C279*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C280*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C281*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C282*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C283*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C284*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C285*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C286*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C287*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C288*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C289*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C290*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C291*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C292*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C293*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C294*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C295*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C296*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C297*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C298*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C299*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C300*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C301*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C302*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C303*/SET SCHEMA PUBLIC
-INSERT INTO OFFER VALUES(6,'qweqwe','http://p.com',100.0E0,FALSE,'qqwe',1)
-ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 7
-COMMIT
-DISCONNECT
-/*C304*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C305*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C306*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C307*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C308*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C309*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C310*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C311*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C312*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C313*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C314*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C315*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C316*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C317*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C318*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C319*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C320*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C321*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C322*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C323*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C324*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C325*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C326*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C327*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C328*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C329*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C330*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C331*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C332*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C333*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C334*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C335*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C336*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C337*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C338*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C339*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C340*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C341*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C342*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C343*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C344*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C345*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C346*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C347*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C348*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C349*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C350*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C351*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C352*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C353*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C354*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C355*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C356*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C357*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C358*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C359*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C360*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C361*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C362*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C363*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C364*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C365*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C366*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C367*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C368*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C369*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C370*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C371*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C372*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C379*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C382*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C380*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C377*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C378*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C376*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C375*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C374*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C373*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C381*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C383*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C384*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C385*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C386*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C387*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C388*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C389*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C390*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C391*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C392*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C393*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C394*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C395*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C396*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C397*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C398*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C399*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C400*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C401*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C402*/SET SCHEMA PUBLIC
-DISCONNECT

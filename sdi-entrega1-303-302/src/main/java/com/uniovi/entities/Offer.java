@@ -61,7 +61,7 @@ public class Offer {
 	@Override
 
 	public String toString() {
-		return "Mark [id=" + id + ", description=" + description + ", score=" + price + "]";
+		return "Offer [id=" + id + ", description=" + description + ", score=" + price + "]";
 
 	}
 
