@@ -128,12 +128,13 @@ public class UsersController {
 		} else {
 			User user = usersService.getUserByEmail(Email);
 			Page<Offer> offers = new PageImpl<Offer>(new LinkedList<Offer>());
-
+			Page<Offer> specialOffers = new PageImpl<Offer>(new LinkedList<Offer>());
+			specialOffers = offersService.getSpecialOffersByOthers(pageable, user);
 			offers = offersService.getOffersByOthers(pageable, user);
 			model.addAttribute("user", user);
+			model.addAttribute("specialOffers", specialOffers.getContent());
 			model.addAttribute("offerList", offers.getContent());
 			model.addAttribute("page", offers);
-			User activeUser = usersService.getUserByEmail(Email);
 			return "home";
 		}
 	}

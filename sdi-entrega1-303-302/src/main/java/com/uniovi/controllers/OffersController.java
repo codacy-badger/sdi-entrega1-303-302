@@ -45,11 +45,12 @@ public class OffersController {
 
 	@RequestMapping(value = "/offer/add", method = RequestMethod.POST)
 	public String setOffer(@ModelAttribute Offer offer, Principal principal, BindingResult result) {
+		offer.setUser(usersService.getUserByEmail(principal.getName()));
 		offerAddFormValidator.validate(offer, result);
 		if (result.hasErrors()) {
 			return "offer/add";
 		}
-		offer.setUser(usersService.getUserByEmail(principal.getName()));
+
 		
 		offersService.addOffer(offer);
 		return "redirect:/offer/list";

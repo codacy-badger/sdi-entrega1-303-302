@@ -27,7 +27,7 @@ public class Offer {
 	private String picture;
 	private Boolean resend = false;
 	private Double price;
-	private Boolean special = false;
+	private Boolean special;
 	private	Boolean sold= false;
 	@Temporal(TemporalType.DATE)
 	private Calendar date = Calendar.getInstance();

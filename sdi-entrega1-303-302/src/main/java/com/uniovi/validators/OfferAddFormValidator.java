@@ -3,16 +3,17 @@ package com.uniovi.validators;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import com.uniovi.entities.Offer;
 import com.uniovi.entities.User;
+import com.uniovi.services.UsersService;
 
 @Component
 public class OfferAddFormValidator implements Validator {
-
 	private static final Pattern pattern = Pattern.compile("^((((https?|ftps?|gopher|telnet|nntp)://)|(mailto:|news:))"
 			+ "(%[0-9A-Fa-f]{2}|[-()_.!~*';/?:@&=+$, A-Za-z0-9])+)" + "([).!';/?:, ][[:blank:]])?$");
 	@Override
@@ -32,6 +33,9 @@ public class OfferAddFormValidator implements Validator {
 			errors.rejectValue("title", "Error.offer.add.title");
 		} else if (offer.getPicture() == null || !matcher.find()) {
 			errors.rejectValue("picture", "Error.offer.add.picture");
+		}
+		else if (offer.getUser().getBalance() < 20) {
+			errors.rejectValue("special", "Error.offer.add.picture");
 		}
 	}
 }
