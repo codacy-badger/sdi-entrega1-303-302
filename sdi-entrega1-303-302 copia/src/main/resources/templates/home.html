@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments/head" />
+<body>
+	<nav th:replace="fragments/nav" />
+	<div class="container" style="text-align: center">
+		<h2 th:text="#{welcome.message}"></h2>
+		<h3>Esta es una zona privada la web</h3>
+		<p>
+			Usuario Autenticado como : <span
+				sec:authentication="principal.username" th:inline="text"> </span>
+		</p>
+		<form class="navbar-form" action="/offer/list">
+			<div class="form-group">
+				<input name="searchText" type="text" class="form-control" size="50"
+					placeholder="Buscar por Titulo de oferta">
+			</div>
+			<button type="submit" class="btn btn-default">Buscar</button>
+		</form>
+		<p>Ofertas:</p>
+		<div class="table-responsive">
+			<div class="table-responsive">
+				<table class="table table-hover" th:fragment="tableOffers"
+					id="tableOffers">
+					<thead>
+						<tr>
+							<th class="col-md-1">id</th>
+							<th class="col-md-1">Titulo</th>
+							<th class="col-md-1">Descripción</th>
+							<th class="col-md-1">Precio</th>
+							<th class="col-md-1">Stock</th>
+							<th class="col-md-1">Mas informacion</th>
+							<th class="col-md-1"></th>
+							<th class="col-md-1"></th>
+							<th class="col-md-1"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="offer : ${offerList}">
+							<td th:text="${offer.id}">1</td>
+							<td th:text="${offer.title}">Opel corsa</td>
+							<td th:text="${offer.description}">50 cv</td>
+							<td th:text="${offer.price}">10</td>
+							<td th:if="${offer.sold} == false" th:text="Disponible"></td>
+							<td th:if="${offer.sold} == true" th:text="Vendido"></td>
+							<td><a th:href="${'/offer/details/' + offer.id}">detalles</a></td>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="fragments/footer" />
+</body>
+</html>
