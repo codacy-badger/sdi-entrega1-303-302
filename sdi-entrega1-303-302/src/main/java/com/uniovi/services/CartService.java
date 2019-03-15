@@ -1,6 +1,7 @@
 package com.uniovi.services;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,8 +14,6 @@ import com.uniovi.entities.Offer;
 import com.uniovi.entities.Purchase;
 import com.uniovi.entities.User;
 import com.uniovi.repositories.OffersRepository;
-import com.uniovi.repositories.PurchasesRepository;
-import com.uniovi.repositories.UsersRepository;
 
 @Service
 @Transactional
@@ -67,8 +66,9 @@ public class CartService {
 				User vendedor = usersService.getUserByEmail(offer.getUser().getEmail());
 				System.out.println(vendedor.getName());
 				vendedor.setBalance(vendedor.getBalance() + offer.getPrice());
-				articles.clear();
+
 			}
+			articles.clear();
 			return true;
 
 		}

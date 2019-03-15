@@ -55,7 +55,7 @@ public class CartController {
     	User user = usersService.getUserByEmail(Email);
     	boolean result = cartService.checkout(user);
     	if(result) {
-    		return "redirect:/cart/final";
+    		return "cart/final";
     	} else {
     		return "redirect:/cart/error";
     	}
