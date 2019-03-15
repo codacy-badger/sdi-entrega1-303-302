@@ -134,9 +134,12 @@ public class OffersController {
 	String Email = principal.getName(); 
 	User user = usersService.getUserByEmail(Email);
 	Page<Offer> offers = new PageImpl<Offer>(new LinkedList<Offer>());
-
+	if(searchText != null && !searchText.isEmpty()) {
+		offers = offersService.searchOffersByTitle(pageable, searchText, user);
+	}
+	else {
 	offers = offersService.getOffersByOthers(pageable, user);
-	
+	}
 	model.addAttribute("offerList", offers.getContent()); 
 	model.addAttribute("page", offers);
 	return "offer/list";

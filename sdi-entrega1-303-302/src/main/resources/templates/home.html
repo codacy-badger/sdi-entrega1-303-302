@@ -13,7 +13,7 @@
 		<form class="navbar-form" action="/offer/list">
 			<div class="form-group">
 				<input name="searchText" type="text" class="form-control" size="50"
-					placeholder="Buscar por descripción o nombre del alumno">
+					placeholder="Buscar por Titulo de oferta">
 			</div>
 			<button type="submit" class="btn btn-default">Buscar</button>
 		</form>
@@ -36,7 +36,7 @@
 						<tr th:each="offer : ${offerList}">
 							<td th:text="${offer.id}">1</td>
 							<td th:text="${offer.description}">Ejercicio 1</td>
-							<td th:text="${offer.price}">10</td>€
+							<td th:text="${offer.price}">10</td>
 							<td><a th:href="${'/offer/details/' + offer.id}">detalles</a></td>
 
 						</tr>

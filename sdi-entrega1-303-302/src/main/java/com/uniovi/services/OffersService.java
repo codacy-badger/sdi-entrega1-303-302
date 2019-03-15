@@ -97,6 +97,13 @@ public class OffersService {
 		}
 		return offers;
 	}
+	
+	public Page<Offer> searchOffersByTitle(Pageable pageable, String searchText, User user) {
+		Page<Offer> offers = new PageImpl<Offer>(new LinkedList<Offer>());
+		searchText = "%" + searchText + "%";
+		offers = offersRepository.searchByTitle(pageable, searchText, user);
+		return offers;
+	}
 
 	public Page<Offer> getOffers(Pageable pageable) {
 		Page<Offer> marks = offersRepository.findAll(pageable);
