@@ -53,8 +53,9 @@ public class CartController {
     public String checkOut(Principal principal, Model model) {
     	String Email = principal.getName(); 
     	User user = usersService.getUserByEmail(Email);
-    	if(cartService.checkout(user)) {
-    		return "cart/final";
+    	boolean result = cartService.checkout(user);
+    	if(result) {
+    		return "redirect:/cart/final";
     	} else {
     		return "redirect:/cart/error";
     	}

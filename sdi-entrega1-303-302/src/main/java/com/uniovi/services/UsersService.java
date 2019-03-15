@@ -16,6 +16,8 @@ public class UsersService {
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	@Autowired
 	private UsersRepository usersRepository;
+	@Autowired
+	private RolesService rolesService;
 
 	public List<User> getUsers() {
 		List<User> users = new ArrayList<User>();
@@ -29,17 +31,22 @@ public class UsersService {
 
 	public void addUser(User user) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+		user.setBalance(100.0);
+		if (user.getEmail().equals("admin@email.com")) {
+			user.setRole(rolesService.getRoles()[1]);
+		} else {
+			user.setRole(rolesService.getRoles()[0]);
+		}
 		usersRepository.save(user);
 	}
 
 	public void deleteUser(Long id) {
 		usersRepository.deleteById(id);
 	}
-	
+
 	public void deleteUser(String email) {
 		usersRepository.deleteById(usersRepository.findByEmail(email).getId());
 	}
-
 
 	public User getUserByEmail(String Email) {
 		return usersRepository.findByEmail(Email);

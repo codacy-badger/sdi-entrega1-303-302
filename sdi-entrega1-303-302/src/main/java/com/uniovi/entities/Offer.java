@@ -1,12 +1,20 @@
 package com.uniovi.entities;
 
+import java.util.Calendar;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+/**
+ * @author yagogarciarodriguez
+ *
+ */
 @Entity
 @Table(name = "offer")
 public class Offer {
@@ -20,7 +28,9 @@ public class Offer {
 	private Boolean resend = false;
 	private Double price;
 	private Boolean special = false;
-	
+	private	Boolean sold= false;
+	@Temporal(TemporalType.DATE)
+	private Calendar date = Calendar.getInstance();
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
@@ -112,5 +122,22 @@ public class Offer {
 	public void setSpecial(Boolean special) {
 		this.special = special;
 	}
+
+	public Boolean getSold() {
+		return sold;
+	}
+
+	public void setSold(Boolean sold) {
+		this.sold = sold;
+	}
+
+	public Calendar getDate() {
+		return date;
+	}
+
+	public void setDate(Calendar date) {
+		this.date = date;
+	}
+	
 	
 }

@@ -1,5 +1,6 @@
 package com.uniovi.entities;
 
+import java.util.HashSet;
 import java.util.Set; //A collection that contains no duplicate elements
 
 import javax.persistence.CascadeType;
@@ -30,7 +31,7 @@ public class User {
 	private String role;
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-	private Set<Offer> offers;
+	private Set<Offer> offers = new HashSet<>();
 
 	public User(String email, String name, String lastName) {
 		super();

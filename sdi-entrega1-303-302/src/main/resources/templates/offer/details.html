@@ -26,10 +26,17 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">Precio</div>
 			<div class="panel-body" th:text="${offer.price}">100</div>
-
-			<a th:href="@{'/cart/add/{id}'(id=${offer.id})}"
-				class="col-md-1">
-				<button type="button" class="btn btn-primary" th:text="comprar">Comprar</button>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">Fecha de publicacion</div>
+			<div class="panel-body"
+				th:text="${#dates.format(offer.date, 'dd-MM-yyyy')}">01-01-1998</div>
+		</div>
+		<div th:if="${offer.sold == false}" class="panel panel-default">
+			<div class="panel-heading"></div>
+			<a th:href="@{'/cart/add/{id}'(id=${offer.id})}" class="col-md-1">
+				<button type="button" class="btn btn-primary" th:text="comprar">Añadir
+					al carrito</button>
 			</a>
 		</div>
 	</div>

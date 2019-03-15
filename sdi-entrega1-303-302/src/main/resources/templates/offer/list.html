@@ -20,8 +20,11 @@
 				<thead>
 					<tr>
 						<th class="col-md-1">id</th>
+						<th>Titulo</th>
 						<th>Descripción</th>
 						<th>Precio</th>
+						<th>Stock</th>
+						<th>Mas informacion</th>
 						<th class="col-md-1"></th>
 						<th class="col-md-1"></th>
 						<th class="col-md-1"></th>
@@ -33,6 +36,8 @@
 						<td th:text="${offer.title}">1</td>
 						<td th:text="${offer.description}">Ejercicio 1</td>
 						<td th:text="${offer.price}">10</td>
+						<td th:if="${offer.sold} == false" th:text="Disponible"></td>
+						<td th:if="${offer.sold} == true" th:text="Vendido"></td>
 						<td><a th:href="${'/offer/details/' + offer.id}">detalles</a></td>
 					</tr>
 				</tbody>
