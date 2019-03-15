@@ -53,8 +53,17 @@ public class CartController {
     public String checkOut(Principal principal, Model model) {
     	String Email = principal.getName(); 
     	User user = usersService.getUserByEmail(Email);
-    	cartService.checkout(user);
-    	return "cart/final";
+    	if(cartService.checkout(user)) {
+    		return "cart/final";
+    	} else {
+    		return "redirect:/cart/error";
+    	}
+    }
+    
+    @RequestMapping("/cart/error")
+    public String errorCarrito(Model model) {
+    		return "cart/error";
+    	
     }
     
     

@@ -46,13 +46,13 @@ public class CartService {
 		return new ArrayList<Offer>(articles);
 	}
 
-	public void checkout(User user) {
+	public boolean checkout(User user) {
 		double price = 0.0;
 		for (Offer offer : articles) {
 			price += offer.getPrice();
 		}
 		if (user.getBalance() < price) {
-			// throw new runtimeexception
+			return false;
 		} else {
 			for (Offer offer : articles) {
 				offersRepository.deleteById(offer.getId());
@@ -67,10 +67,12 @@ public class CartService {
 				User vendedor = usersService.getUserByEmail(offer.getUser().getEmail());
 				System.out.println(vendedor.getName());
 				vendedor.setBalance(vendedor.getBalance() + offer.getPrice());
+				articles.clear();
 			}
+			return true;
 
 		}
-		articles.clear();
+		
 	}
 
 	public double getPrice() {
