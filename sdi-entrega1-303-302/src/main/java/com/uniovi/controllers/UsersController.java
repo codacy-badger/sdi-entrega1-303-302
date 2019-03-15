@@ -130,11 +130,10 @@ public class UsersController {
 			Page<Offer> offers = new PageImpl<Offer>(new LinkedList<Offer>());
 
 			offers = offersService.getOffersByOthers(pageable, user);
-
+			model.addAttribute("user", user);
 			model.addAttribute("offerList", offers.getContent());
 			model.addAttribute("page", offers);
 			User activeUser = usersService.getUserByEmail(Email);
-			model.addAttribute("markList", activeUser.getMarks());
 			return "home";
 		}
 	}
