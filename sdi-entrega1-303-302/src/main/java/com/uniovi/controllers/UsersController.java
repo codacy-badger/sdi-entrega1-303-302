@@ -2,6 +2,7 @@ package com.uniovi.controllers;
 
 import java.security.Principal;
 import java.util.LinkedList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -67,6 +68,14 @@ public class UsersController {
 	@RequestMapping("/user/delete/{id}")
 	public String delete(@PathVariable Long id) {
 		usersService.deleteUser(id);
+		return "redirect:/user/list";
+	}
+
+	@RequestMapping(value = "/user/delete", method = RequestMethod.POST)
+	public String delete(@RequestParam(name="seleccionado") List<String> emails) {
+		for (String email : emails) {
+			usersService.deleteUser(email);
+		}
 		return "redirect:/user/list";
 	}
 
