@@ -25,8 +25,11 @@
 					<thead>
 						<tr>
 							<th class="col-md-1">id</th>
-							<th>Descripción</th>
-							<th>Precio</th>
+							<th class="col-md-1">Titulo</th>
+							<th class="col-md-1">Descripción</th>
+							<th class="col-md-1">Precio</th>
+							<th class="col-md-1">Stock</th>
+							<th class="col-md-1">Mas informacion</th>
 							<th class="col-md-1"></th>
 							<th class="col-md-1"></th>
 							<th class="col-md-1"></th>
@@ -35,7 +38,8 @@
 					<tbody>
 						<tr th:each="offer : ${offerList}">
 							<td th:text="${offer.id}">1</td>
-							<td th:text="${offer.description}">Ejercicio 1</td>
+							<td th:text="${offer.title}">Opel corsa</td>
+							<td th:text="${offer.description}">50 cv</td>
 							<td th:text="${offer.price}">10</td>
 							<td th:if="${offer.sold} == false" th:text="Disponible"></td>
 							<td th:if="${offer.sold} == true" th:text="Vendido"></td>

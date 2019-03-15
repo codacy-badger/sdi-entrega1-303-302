@@ -55,6 +55,7 @@ public class CartService {
 		} else {
 			for (Offer offer : articles) {
 				offer.setSold(true);
+				offersRepository.save(offer);
 				user.setBalance(user.getBalance() - offer.getPrice());
 				Purchase purchase = new Purchase();
 				purchase.setTitle(offer.getTitle());
