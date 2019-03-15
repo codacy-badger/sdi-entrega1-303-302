@@ -194,7 +194,16 @@ public class myWallapopTest {
 
 	@Test
 	public void PR11() {
-
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		// Rellenamos el formulario
+		PO_LoginView.fillForm(driver, "prueba@prueba.com", "123456");
+		// Ahora nos desconectamos
+		PO_HomeView.clickOption(driver, "logout", "class", "btn btn-primary");
+		// COmprobamos que entramos en la pagina de login
+		PO_View.checkElement(driver, "text", "Email");
+		SeleniumUtils.esperarSegundos(driver, 1);
+		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "Logout",PO_View.getTimeout() );
 	}
 
 	// [Prueba12] Mostrar el listado de usuarios y comprobar que se muestran todos
@@ -362,29 +371,118 @@ public class myWallapopTest {
 	// [Prueba17] Ir al formulario de alta de oferta, rellenarla con datos inválidos
 	// (campo título vacío) y pulsar
 	// el botón Submit. Comprobar que se muestra el mensaje de campo obligatorio.
+	@Test
 	public void PR17() {
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		// Rellenamos el formulario con usuario
+		PO_LoginView.fillForm(driver, "prueba@prueba.com", "123456");
+		// Click en usuarios
 
+		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li[contains(@id, 'offers-menu')]/a");
+		elementos.get(0).click();
+
+		// Pinchamos en la opción de añadir oferta y añadimos.
+		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'offer/add')]");
+		elementos.get(0).click();
+		PO_AddOffer.fillForm(driver, "", "descripciondeofeertanueva", "1", "http://google.es");
+		PO_View.checkElement(driver, "text", "Rellene este campo.");
+		
+		// Salimos de sesion
+		PO_PrivateView.clickOption(driver, "logout", "class", "btn btn-primary");
+		SeleniumUtils.esperarSegundos(driver, 1);
 	}
 
 	// [Prueba18] Mostrar el listado de ofertas para dicho usuario y comprobar que
 	// se muestran todas los que
 	// existen para este usuario.
+	@Test
 	public void PR18() {
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		// Rellenamos el formulario con admin
+		PO_LoginView.fillForm(driver, "prueba@prueba.com", "123456");
+		// Click en usuarios
 
+		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li[contains(@id, 'offers-menu')]/a");
+		elementos.get(0).click();
+
+		// Pinchamos en la opción de lista de usuarios.
+		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'offer/list')]");
+		elementos.get(0).click();
+		List<WebElement> elementos1 = SeleniumUtils.EsperaCargaPagina(driver, "free", "//tbody/tr",
+				PO_View.getTimeout());
+
+		assertTrue(elementos1.size() == 5);
+		// Salimos de sesion
+		PO_PrivateView.clickOption(driver, "logout", "class", "btn btn-primary");
+		SeleniumUtils.esperarSegundos(driver, 1);
 	}
 
 	// [Prueba19] Ir a la lista de ofertas, borrar la primera oferta de la lista,
 	// comprobar que la lista se actualiza y
 	// que la oferta desaparece.
+	@Test
 	public void PR19() {
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		// Rellenamos el formulario con admin
+		PO_LoginView.fillForm(driver, "prueba@prueba.com", "123456");
+		// Click en usuarios
 
+		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li[contains(@id, 'offers-menu')]/a");
+		elementos.get(0).click();
+
+		// Pinchamos en la opción de lista de ofertas.
+		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'offer/mylist')]");
+		elementos.get(0).click();
+		List<WebElement> elementos1 = SeleniumUtils.EsperaCargaPagina(driver, "free", "//tbody/tr",
+				PO_View.getTimeout());
+		
+		elementos = PO_View.checkElement(driver, "free",
+				"//td[contains(text(), 'OPEL 19')]/following-sibling::*/a[contains(@href, 'offer/delete')]");
+		elementos.get(0).click();
+		
+		elementos = SeleniumUtils.EsperaCargaPagina(driver, "free", "//tbody/tr", PO_View.getTimeout());
+		System.out.print(elementos.size());
+		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "OPEL 18",PO_View.getTimeout() );
+		
+		// Salimos de sesion
+		PO_PrivateView.clickOption(driver, "logout", "class", "btn btn-primary");
+		SeleniumUtils.esperarSegundos(driver, 1);
 	}
 
 	// [Prueba20] Ir a la lista de ofertas, borrar la última oferta de la lista,
 	// comprobar que la lista se actualiza y
 	// que la oferta desaparece.
+	@Test
 	public void PR20() {
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		// Rellenamos el formulario con admin
+		PO_LoginView.fillForm(driver, "prueba@prueba.com", "123456");
+		// Click en usuarios
 
+		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li[contains(@id, 'offers-menu')]/a");
+		elementos.get(0).click();
+
+		// Pinchamos en la opción de lista de ofertas.
+		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'offer/mylist')]");
+		elementos.get(0).click();
+		List<WebElement> elementos1 = SeleniumUtils.EsperaCargaPagina(driver, "free", "//tbody/tr",
+				PO_View.getTimeout());
+		
+		elementos = PO_View.checkElement(driver, "free",
+				"//td[contains(text(), 'OPEL 15')]/following-sibling::*/a[contains(@href, 'offer/delete')]");
+		elementos.get(0).click();
+		
+		elementos = SeleniumUtils.EsperaCargaPagina(driver, "free", "//tbody/tr", PO_View.getTimeout());
+		System.out.print(elementos.size());
+		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "OPEL 15",PO_View.getTimeout() );
+		
+		// Salimos de sesion
+		PO_PrivateView.clickOption(driver, "logout", "class", "btn btn-primary");
+		SeleniumUtils.esperarSegundos(driver, 1);
 	}
 
 	// Prueba21] Hacer una búsqueda con el campo vacío y comprobar que se muestra la
