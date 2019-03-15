@@ -48,6 +48,10 @@ public class InsertSampleDataService {
 		user5.setPassword("123456");
 		u.add(user5);
 		usersService.addUser(user5);
+		User user6 = new User("123456@prueba.com", "Pedrito", "Lillo");
+		user6.setPassword("123456");
+		u.add(user6);
+		usersService.addUser(user6);
 		User admin = new User("admin@email.com", "Admin", "delSistema");
 		admin.setPassword("admin");
 		usersService.addUser(admin);

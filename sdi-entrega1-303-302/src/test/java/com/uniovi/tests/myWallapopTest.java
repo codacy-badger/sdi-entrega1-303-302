@@ -20,7 +20,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import com.uniovi.tests.pageobjects.PO_AddOffer;
 import com.uniovi.tests.pageobjects.PO_HomeView;
 import com.uniovi.tests.pageobjects.PO_LoginView;
-import com.uniovi.tests.pageobjects.PO_NavView;
 import com.uniovi.tests.pageobjects.PO_PrivateView;
 import com.uniovi.tests.pageobjects.PO_Register;
 import com.uniovi.tests.pageobjects.PO_View;
@@ -408,7 +407,7 @@ public class myWallapopTest {
 		elementos.get(0).click();
 
 		// Pinchamos en la opción de lista de usuarios.
-		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'offer/list')]");
+		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'offer/mylist')]");
 		elementos.get(0).click();
 		List<WebElement> elementos1 = SeleniumUtils.EsperaCargaPagina(driver, "free", "//tbody/tr",
 				PO_View.getTimeout());
@@ -440,7 +439,7 @@ public class myWallapopTest {
 				PO_View.getTimeout());
 		
 		elementos = PO_View.checkElement(driver, "free",
-				"//td[contains(text(), 'OPEL 19')]/following-sibling::*/a[contains(@href, 'offer/delete')]");
+				"//td[contains(text(), 'OPEL 18')]/following-sibling::*/a[contains(@href, 'offer/delete')]");
 		elementos.get(0).click();
 		
 		elementos = SeleniumUtils.EsperaCargaPagina(driver, "free", "//tbody/tr", PO_View.getTimeout());
@@ -488,15 +487,65 @@ public class myWallapopTest {
 	// Prueba21] Hacer una búsqueda con el campo vacío y comprobar que se muestra la
 	// página que
 	// corresponde con el listado de las ofertas existentes en el sistema
+	@Test
 	public void PR21() {
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		// Rellenamos el formulario con admin
+		PO_LoginView.fillForm(driver, "123456@prueba.com", "123456");
+		// Click en usuarios
 
+		List<WebElement> elementos = PO_View.checkElement(driver, "class", "all");
+		elementos.get(0).click();
+
+		// Pinchamos en la opción de lista de usuarios.
+		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'offer/list')]");
+		elementos.get(0).click();
+		
+		List<WebElement> elementos1 = SeleniumUtils.EsperaCargaPagina(driver, "free", "//tbody/tr",
+				PO_View.getTimeout());
+
+		assertTrue(elementos1.size() == 5);
+		// Salimos de sesion
+		PO_PrivateView.clickOption(driver, "logout", "class", "btn btn-primary");
+		SeleniumUtils.esperarSegundos(driver, 1);
 	}
 
 	// [Prueba22] Hacer una búsqueda escribiendo en el campo un texto que no exista
 	// y comprobar que se
 	// muestra la página que corresponde, con la lista de ofertas vacía.
+	@Test
 	public void PR22() {
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		// Rellenamos el formulario con admin
+		PO_LoginView.fillForm(driver, "prueba@prueba.com", "123456");
+		// Click en usuarios
 
+		List<WebElement> elementos = PO_View.checkElement(driver, "class", "all");
+		elementos.get(0).click();
+
+		// Pinchamos en la opción de lista de usuarios.
+		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'offer/list')]");
+		elementos.get(0).click();
+		WebElement tituloe = driver.findElement(By.name("searchText"));
+		tituloe.click();
+		tituloe.clear();
+		tituloe.sendKeys("Ferrari 458");
+		//Pulsamos boton buscar
+		By boton = By.className("busqueda");
+		driver.findElement(boton).click();
+
+		
+		List<WebElement> elementos1 = SeleniumUtils.EsperaCargaPagina(driver, "free", "//tbody",
+				PO_View.getTimeout());
+		
+		
+		//El minimo de elementos es 1.
+		assertTrue(elementos1.size() == 1);
+		// Salimos de sesion
+		PO_PrivateView.clickOption(driver, "logout", "class", "btn btn-primary");
+		SeleniumUtils.esperarSegundos(driver, 1);
 	}
 
 	// Prueba23] Sobre una búsqueda determinada (a elección de desarrollador),

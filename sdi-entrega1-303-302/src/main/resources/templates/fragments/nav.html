@@ -23,7 +23,7 @@
 					<li><a href="/user/add" th:text="#{add.message}"></a></li>
 					<li><a href="/user/list" th:text="#{see.users.message}"></a></li>
 				</ul></li>
-			<li sec:authorize="isAuthenticated()"><a href="/offer/list"> Todas las ofertas
+			<li sec:authorize="isAuthenticated()"><a class="all" href="/offer/list"> Todas las ofertas
 			</a></li>
 		</ul>
 
