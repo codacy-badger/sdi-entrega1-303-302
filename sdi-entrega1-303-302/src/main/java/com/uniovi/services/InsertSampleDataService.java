@@ -48,7 +48,7 @@ public class InsertSampleDataService {
 		user5.setPassword("123456");
 		u.add(user5);
 		usersService.addUser(user5);
-		User user6 = new User("123456@prueba.com", "Pedrito", "Lillo");
+		User user6 = new User("123444@prueba.com", "Pedrito", "Lillo");
 		user6.setPassword("123456");
 		u.add(user6);
 		usersService.addUser(user6);
@@ -62,9 +62,11 @@ public class InsertSampleDataService {
 				o.setId(i);
 				o.setUser(us);
 				o.setPicture("https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:");
-				o.setTitle("OPEL "+i);
+				o.setTitle("OPEL"+i);
 				o.setPrice((double) 40);
-				o.setDescription("OPEL "+i);
+				if(i==20)
+					o.setPrice(60.0);
+				o.setDescription("OPEL"+i);
 				o.setSpecial(false);
 				offerService.addOffer(o);
 				i=i+1;;

@@ -1,5 +1,6 @@
 package com.uniovi.tests;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
@@ -225,7 +226,7 @@ public class myWallapopTest {
 		List<WebElement> elementos1 = SeleniumUtils.EsperaCargaPagina(driver, "free", "//tbody/tr",
 				PO_View.getTimeout());
 
-		assertTrue(elementos1.size() == 7);
+		assertEquals(8, elementos1.size());
 		// Salimos de sesion
 		PO_PrivateView.clickOption(driver, "logout", "class", "btn btn-primary");
 		SeleniumUtils.esperarSegundos(driver, 1);
@@ -316,7 +317,7 @@ public class myWallapopTest {
 				"//td[contains(text(), '456@prueba.com')]/following-sibling::*/input[contains(@type, 'checkbox')]");
 		elementos.get(0).click();
 		elementos = PO_View.checkElement(driver, "free",
-				"//td[contains(text(), '123@prueba.com')]/following-sibling::*/input[contains(@type, 'checkbox')]");
+				"//td[contains(text(), '123444@prueba.com')]/following-sibling::*/input[contains(@type, 'checkbox')]");
 		elementos.get(0).click();
 		By boton = By.className("delete");
 		driver.findElement(boton).click();
@@ -325,7 +326,7 @@ public class myWallapopTest {
 		System.out.print(elementos.size());
 		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "789@prueba.com",PO_View.getTimeout() );
 		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "456@prueba.com",PO_View.getTimeout() );
-		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "123@prueba.com",PO_View.getTimeout() );
+		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "123444@prueba.com",PO_View.getTimeout() );
 		// Salimos de sesion
 		PO_PrivateView.clickOption(driver, "logout", "class", "btn btn-primary");
 		SeleniumUtils.esperarSegundos(driver, 1);
@@ -385,7 +386,7 @@ public class myWallapopTest {
 		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'offer/add')]");
 		elementos.get(0).click();
 		PO_AddOffer.fillForm(driver, "", "descripciondeofeertanueva", "1", "http://google.es");
-		PO_View.checkElement(driver, "text", "Rellene este campo.");
+		PO_View.checkElement(driver, "text", "Titulo incorrecto");
 		
 		// Salimos de sesion
 		PO_PrivateView.clickOption(driver, "logout", "class", "btn btn-primary");
@@ -439,7 +440,7 @@ public class myWallapopTest {
 				PO_View.getTimeout());
 		
 		elementos = PO_View.checkElement(driver, "free",
-				"//td[contains(text(), 'OPEL 18')]/following-sibling::*/a[contains(@href, 'offer/delete')]");
+				"//td[contains(text(), 'OPEL18')]/following-sibling::*/a[contains(@href, 'offer/delete')]");
 		elementos.get(0).click();
 		
 		elementos = SeleniumUtils.EsperaCargaPagina(driver, "free", "//tbody/tr", PO_View.getTimeout());
@@ -472,12 +473,12 @@ public class myWallapopTest {
 				PO_View.getTimeout());
 		
 		elementos = PO_View.checkElement(driver, "free",
-				"//td[contains(text(), 'OPEL 15')]/following-sibling::*/a[contains(@href, 'offer/delete')]");
+				"//td[contains(text(), 'OPEL15')]/following-sibling::*/a[contains(@href, 'offer/delete')]");
 		elementos.get(0).click();
 		
 		elementos = SeleniumUtils.EsperaCargaPagina(driver, "free", "//tbody/tr", PO_View.getTimeout());
 		System.out.print(elementos.size());
-		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "OPEL 15",PO_View.getTimeout() );
+		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "OPEL15",PO_View.getTimeout() );
 		
 		// Salimos de sesion
 		PO_PrivateView.clickOption(driver, "logout", "class", "btn btn-primary");
@@ -492,7 +493,7 @@ public class myWallapopTest {
 		// Vamos al formulario de logueo.
 		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
 		// Rellenamos el formulario con admin
-		PO_LoginView.fillForm(driver, "123456@prueba.com", "123456");
+		PO_LoginView.fillForm(driver, "prueba@prueba.com", "123456");
 		// Click en usuarios
 
 		List<WebElement> elementos = PO_View.checkElement(driver, "class", "all");
@@ -505,7 +506,7 @@ public class myWallapopTest {
 		List<WebElement> elementos1 = SeleniumUtils.EsperaCargaPagina(driver, "free", "//tbody/tr",
 				PO_View.getTimeout());
 
-		assertTrue(elementos1.size() == 5);
+		assertEquals(5, elementos1.size());
 		// Salimos de sesion
 		PO_PrivateView.clickOption(driver, "logout", "class", "btn btn-primary");
 		SeleniumUtils.esperarSegundos(driver, 1);
@@ -553,8 +554,50 @@ public class myWallapopTest {
 	// un saldo positivo en el contador del comprobador. Y comprobar que el contador
 	// se actualiza
 	// correctamente en la vista del comprador.
+	@Test
 	public void PR23() {
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		// Rellenamos el formulario con admin
+		PO_LoginView.fillForm(driver, "prueba@prueba.com", "123456");
+		// Click en usuarios
 
+		List<WebElement> elementos = PO_View.checkElement(driver, "class", "all");
+		elementos.get(0).click();
+
+		// Pinchamos en la opción de lista de usuarios.
+		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'offer/list')]");
+		elementos.get(0).click();
+		WebElement tituloe = driver.findElement(By.name("searchText"));
+		tituloe.click();
+		tituloe.clear();
+		tituloe.sendKeys("OPEL21");
+		//Pulsamos boton buscar
+		By boton = By.className("busqueda");
+		driver.findElement(boton).click();
+
+		
+		List<WebElement> elementos1 = SeleniumUtils.EsperaCargaPagina(driver, "free", "//tbody",
+				PO_View.getTimeout());
+		
+		boton = By.className("botoncomprar");
+		driver.findElement(boton).click();
+		
+		//finalizamos compra
+		boton = By.className("end");
+		driver.findElement(boton).click();
+		
+		//volver a home
+		
+		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'/home')]");
+		elementos.get(0).click();
+		
+		PO_View.checkElement(driver, "text", "60.0");
+		//El minimo de elementos es 1.
+		assertTrue(elementos1.size() == 1);
+		// Salimos de sesion
+		PO_PrivateView.clickOption(driver, "logout", "class", "btn btn-primary");
+		SeleniumUtils.esperarSegundos(driver, 1);
 	}
 
 	// [Prueba24] Sobre una búsqueda determinada (a elección de desarrollador),
@@ -562,8 +605,49 @@ public class myWallapopTest {
 	// un saldo 0 en el contador del comprobador. Y comprobar que el contador se
 	// actualiza correctamente en
 	// la vista del comprador.
+	@Test
 	public void PR24() {
+		// Vamos al formulario de logueo.
+				PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+				// Rellenamos el formulario con admin
+				PO_LoginView.fillForm(driver, "prueba@prueba.com", "123456");
+				// Click en usuarios
 
+				List<WebElement> elementos = PO_View.checkElement(driver, "class", "all");
+				elementos.get(0).click();
+
+				// Pinchamos en la opción de lista de usuarios.
+				elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'offer/list')]");
+				elementos.get(0).click();
+				WebElement tituloe = driver.findElement(By.name("searchText"));
+				tituloe.click();
+				tituloe.clear();
+				tituloe.sendKeys("OPEL20");
+				//Pulsamos boton buscar
+				By boton = By.className("busqueda");
+				driver.findElement(boton).click();
+
+				
+				List<WebElement> elementos1 = SeleniumUtils.EsperaCargaPagina(driver, "free", "//tbody",
+						PO_View.getTimeout());
+				
+				boton = By.className("botoncomprar");
+				driver.findElement(boton).click();
+				
+				//finalizamos compra
+				boton = By.className("end");
+				driver.findElement(boton).click();
+				
+				//volver a home
+				
+				elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'/home')]");
+				elementos.get(0).click();
+				
+				PO_View.checkElement(driver, "text", "0.0");
+				//El minimo de elementos es 1.
+				// Salimos de sesion
+				PO_PrivateView.clickOption(driver, "logout", "class", "btn btn-primary");
+				SeleniumUtils.esperarSegundos(driver, 1);
 	}
 
 	// [Prueba25] Sobre una búsqueda determinada (a elección de desarrollador),
@@ -571,15 +655,69 @@ public class myWallapopTest {
 	// que esté por encima de saldo disponible del comprador. Y comprobar que se
 	// muestra el mensaje de
 	// saldo no suficiente.
+	@Test
 	public void PR25() {
 
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		// Rellenamos el formulario con admin
+		PO_LoginView.fillForm(driver, "prueba@prueba.com", "123456");
+		// Click en usuarios
+
+		List<WebElement> elementos = PO_View.checkElement(driver, "class", "all");
+		elementos.get(0).click();
+
+		// Pinchamos en la opción de lista de usuarios.
+		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'offer/list')]");
+		elementos.get(0).click();
+		WebElement tituloe = driver.findElement(By.name("searchText"));
+		tituloe.click();
+		tituloe.clear();
+		tituloe.sendKeys("OPEL22");
+		//Pulsamos boton buscar
+		By boton = By.className("busqueda");
+		driver.findElement(boton).click();
+
+		
+		List<WebElement> elementos1 = SeleniumUtils.EsperaCargaPagina(driver, "free", "//tbody",
+				PO_View.getTimeout());
+		
+		boton = By.className("botoncomprar");
+		driver.findElement(boton).click();
+		
+		//finalizamos compra
+		boton = By.className("end");
+		driver.findElement(boton).click();
+		//Comprobamos mensaje
+		PO_View.checkElement(driver, "class", "error");
+		// Salimos de sesion
+		PO_PrivateView.clickOption(driver, "logout", "class", "btn btn-primary");
+		SeleniumUtils.esperarSegundos(driver, 1);
 	}
 
 	// [Prueba26] Ir a la opción de ofertas compradas del usuario y mostrar la
 	// lista. Comprobar que aparecen
 	// las ofertas que deben aparecer.
+	@Test
 	public void PR26() {
 
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		// Rellenamos el formulario con admin
+		PO_LoginView.fillForm(driver, "prueba@prueba.com", "123456");
+		// Click en usuarios
+
+		List<WebElement> elementos = PO_View.checkElement(driver, "class", "all");
+		elementos.get(0).click();
+
+		// Pinchamos en la opción de lista de usuarios.
+		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'purchase/list')]");
+		elementos.get(0).click();
+		PO_View.checkElement(driver, "text", "OPEL21");
+		PO_View.checkElement(driver, "text", "OPEL20");
+		// Salimos de sesion
+		PO_PrivateView.clickOption(driver, "logout", "class", "btn btn-primary");
+		SeleniumUtils.esperarSegundos(driver, 1);
 	}
 
 	// [Prueba27] Visualizar al menos cuatro páginas en Español/Inglés/Español

@@ -19,7 +19,7 @@ public interface OffersRepository extends CrudRepository<Offer, Long> {
 	@Query("SELECT r FROM Offer r WHERE (LOWER(r.title) LIKE LOWER(?1) OR LOWER(r.title) LIKE LOWER(?1)) AND r.user <> ?2 ")
 	Page<Offer> searchByDescriptionNameAndUser(Pageable pageable, String seachtext, User user);
 	
-	@Query("SELECT r FROM Offer r WHERE (LOWER(r.title) LIKE LOWER(?1) OR LOWER(r.user.name) LIKE LOWER(?1)) AND r.user = ?2 ")
+	@Query("SELECT r FROM Offer r WHERE (LOWER(r.title) LIKE LOWER(?1)) AND r.user <> ?2 ")
 	Page<Offer> searchByTitle(Pageable pageable, String seachtext, User user);
 
 	

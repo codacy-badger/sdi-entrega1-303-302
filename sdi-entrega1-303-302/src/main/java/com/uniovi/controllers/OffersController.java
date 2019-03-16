@@ -50,8 +50,6 @@ public class OffersController {
 		if (result.hasErrors()) {
 			return "offer/add";
 		}
-
-		
 		offersService.addOffer(offer);
 		return "redirect:/offer/list";
 	}

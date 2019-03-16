@@ -48,8 +48,11 @@ public class OffersService {
 	}
 
 	public void addOffer(Offer offer) { // Si en Id es null le asignamos el ultimo + 1 de la lista
-		if(offer.getSpecial()) {
+		if(offer.getSpecial() != null && offer.getSpecial()) {
 			offer.getUser().setBalance(offer.getUser().getBalance() - 20);
+		}
+		else {
+			offer.setSpecial(false);
 		}
 		offersRepository.save(offer);
 	}
