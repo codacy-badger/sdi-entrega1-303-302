@@ -9768,3 +9768,142 @@ DISCONNECT
 DISCONNECT
 /*C637*/SET SCHEMA PUBLIC
 DISCONNECT
+/*C638*/SET SCHEMA PUBLIC
+alter table chat drop constraint FK9339d804p8465c93g38ns1vsc
+alter table chat drop constraint FK7qupxmrlabqau20r4fqtpe7ev
+alter table message drop constraint FKmejd0ykokrbuekwwgd5a5xt8a
+alter table offer drop constraint FKo0rdvexlxmyakcvw8b5aqidlk
+alter table purchase drop constraint FK86i0stm7cqsglqptdvjij1k3m
+drop table chat if exists
+drop table message if exists
+drop table offer if exists
+drop table purchase if exists
+drop table user if exists
+drop sequence hibernate_sequence if exists
+create sequence hibernate_sequence start with 1 increment by 1
+create table chat (id bigint not null, destine bigint, user bigint, primary key (id))
+create table message (id bigint not null, message varchar(255), chat_id bigint, primary key (id))
+create table offer (id bigint not null, date date, description varchar(255), picture varchar(255), price double, resend boolean, sold boolean, special boolean, title varchar(255), user_id bigint, primary key (id))
+create table purchase (id bigint not null, description varchar(255), picture varchar(255), price double, resend boolean, title varchar(255), user_id bigint, primary key (id))
+create table user (id bigint not null, balance double, email varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
+alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
+alter table chat add constraint FK9339d804p8465c93g38ns1vsc foreign key (destine) references user
+alter table chat add constraint FK7qupxmrlabqau20r4fqtpe7ev foreign key (user) references user
+alter table message add constraint FKmejd0ykokrbuekwwgd5a5xt8a foreign key (chat_id) references chat
+alter table offer add constraint FKo0rdvexlxmyakcvw8b5aqidlk foreign key (user_id) references user
+alter table purchase add constraint FK86i0stm7cqsglqptdvjij1k3m foreign key (user_id) references user
+INSERT INTO USER VALUES(1,100.0E0,'pruebadeemail@prueba.com','D\u00edaz','Pedro','$2a$10$MJpplYg7HjZ6s46H9vzQk.J9qPl9qmbYciCoVwjf0URCT2TZo4t1C','ROLE_USER')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
+COMMIT
+INSERT INTO USER VALUES(2,100.0E0,'prueba@prueba.com','Castro','Carlos','$2a$10$UVyLl2wdj0E2G.CFC1OiducF4lxSJABxxwqAEAaB350xap7eOcgHO','ROLE_USER')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 3
+COMMIT
+INSERT INTO USER VALUES(3,100.0E0,'123@prueba.com','Gomez','Federico','$2a$10$6ZinT7qgXnUQ3UZQ0ElQHOtJYBY/HCwCXSqQlP.USHaFkEqZaxUki','ROLE_USER')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 4
+COMMIT
+INSERT INTO USER VALUES(4,100.0E0,'456@prueba.com','Lopez','Romina','$2a$10$viUur0oCuNfFiS2IF1DyEOH19cg/r0HjaYMaffqRGDpKzUR29bP0.','ROLE_USER')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 5
+COMMIT
+INSERT INTO USER VALUES(5,100.0E0,'789@prueba.com','Gimenez','Indiana','$2a$10$nJ0nkBQpk4muISbRo9brceE.srkPPIzUT/PajOpq8wIvvgESaGJCu','ROLE_USER')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 6
+COMMIT
+INSERT INTO USER VALUES(6,100.0E0,'123444@prueba.com','Lillo','Pedrito','$2a$10$pXp/vYW0ItftI/nfbaLvIOPZ5hJSXly3vMg4S/L77oGulpG7rpr8G','ROLE_USER')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 7
+COMMIT
+INSERT INTO USER VALUES(7,100.0E0,'admin@email.com','delSistema','Admin','$2a$10$dlCDjMH/ZwBoOvhrB2zhg.GIkxNdXHFxT14weSoYgN82hBp0ngr8C','ROLE_ADMIN')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 8
+COMMIT
+INSERT INTO OFFER VALUES(8,'2019-03-17','OPEL10','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL10',1)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 9
+COMMIT
+INSERT INTO OFFER VALUES(9,'2019-03-17','OPEL11','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL11',1)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 10
+COMMIT
+INSERT INTO OFFER VALUES(10,'2019-03-17','OPEL12','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL12',1)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 11
+COMMIT
+INSERT INTO OFFER VALUES(11,'2019-03-17','OPEL13','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL13',1)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 12
+COMMIT
+INSERT INTO OFFER VALUES(12,'2019-03-17','OPEL14','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL14',1)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 13
+COMMIT
+INSERT INTO OFFER VALUES(13,'2019-03-17','OPEL15','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL15',2)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 14
+COMMIT
+INSERT INTO OFFER VALUES(14,'2019-03-17','OPEL16','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL16',2)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 15
+COMMIT
+INSERT INTO OFFER VALUES(15,'2019-03-17','OPEL17','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL17',2)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 16
+COMMIT
+INSERT INTO OFFER VALUES(16,'2019-03-17','OPEL18','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL18',2)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 17
+COMMIT
+INSERT INTO OFFER VALUES(17,'2019-03-17','OPEL19','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL19',2)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 18
+COMMIT
+INSERT INTO OFFER VALUES(18,'2019-03-17','OPEL20','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',60.0E0,FALSE,FALSE,FALSE,'OPEL20',3)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 19
+COMMIT
+INSERT INTO OFFER VALUES(19,'2019-03-17','OPEL21','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL21',3)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 20
+COMMIT
+INSERT INTO OFFER VALUES(20,'2019-03-17','OPEL22','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL22',3)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 21
+COMMIT
+INSERT INTO OFFER VALUES(21,'2019-03-17','OPEL23','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL23',3)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 22
+COMMIT
+INSERT INTO OFFER VALUES(22,'2019-03-17','OPEL24','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL24',3)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 23
+COMMIT
+INSERT INTO OFFER VALUES(23,'2019-03-17','OPEL25','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL25',4)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 24
+COMMIT
+INSERT INTO OFFER VALUES(24,'2019-03-17','OPEL26','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL26',4)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 25
+COMMIT
+INSERT INTO OFFER VALUES(25,'2019-03-17','OPEL27','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL27',4)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 26
+COMMIT
+INSERT INTO OFFER VALUES(26,'2019-03-17','OPEL28','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL28',4)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 27
+COMMIT
+INSERT INTO OFFER VALUES(27,'2019-03-17','OPEL29','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL29',4)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 28
+COMMIT
+INSERT INTO OFFER VALUES(28,'2019-03-17','OPEL30','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL30',5)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 29
+COMMIT
+INSERT INTO OFFER VALUES(29,'2019-03-17','OPEL31','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL31',5)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 30
+COMMIT
+INSERT INTO OFFER VALUES(30,'2019-03-17','OPEL32','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL32',5)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 31
+COMMIT
+INSERT INTO OFFER VALUES(31,'2019-03-17','OPEL33','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL33',5)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 32
+COMMIT
+INSERT INTO OFFER VALUES(32,'2019-03-17','OPEL34','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL34',5)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 33
+COMMIT
+INSERT INTO OFFER VALUES(33,'2019-03-17','OPEL35','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL35',6)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 34
+COMMIT
+INSERT INTO OFFER VALUES(34,'2019-03-17','OPEL36','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL36',6)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 35
+COMMIT
+INSERT INTO OFFER VALUES(35,'2019-03-17','OPEL37','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL37',6)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 36
+COMMIT
+INSERT INTO OFFER VALUES(36,'2019-03-17','OPEL38','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL38',6)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 37
+COMMIT
+INSERT INTO OFFER VALUES(37,'2019-03-17','OPEL39','https://www.google.com/search?q=opel&rlz=1C1GCEU_enES835ES835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjQ5v2T6IPhAhVROhoKHZ7YBHQQ_AUIDygC&biw=1280&bih=913#imgrc=YeGRiTKDST2K1M:',40.0E0,FALSE,FALSE,FALSE,'OPEL39',6)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 38
+COMMIT
+INSERT INTO CHAT VALUES(38,2,1)
+INSERT INTO MESSAGE VALUES(39,'hola',38)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 40
+COMMIT

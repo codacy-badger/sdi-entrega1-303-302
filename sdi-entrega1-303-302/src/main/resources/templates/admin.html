@@ -5,17 +5,13 @@
 	<nav th:replace="fragments/nav" />
 	<div class="container" style="text-align: center">
 		<h2 th:text="#{welcome.message}"></h2>
-		<h3>Esta es una zona privada la web, solo pueden entrar administradores</h3>
-		<p>
-			Usuario Autenticado como : 
+		<h3 th:text="#{admin.home}"></h3>
+		<p th:text="#{admin.auth}"> 
 			<span sec:authentication="principal.username" th:inline="text">
 			</span>
 		</p>
 		<p>
-			<a th:href="${'/user/details/' + #httpServletRequest.remoteUser}">Detalles
-				de Usuario</a>
 		</p>
-		<p>Aquí se mostrarán opciones exclusivas para el administrador del sitio</p>
 	</div>
 	<footer th:replace="fragments/footer" />
 </body>
