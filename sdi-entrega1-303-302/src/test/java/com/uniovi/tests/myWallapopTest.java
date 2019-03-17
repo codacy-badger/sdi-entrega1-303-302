@@ -718,7 +718,6 @@ public class myWallapopTest {
 	// Usuario/Listado de Usuarios de Admin/Vista de alta de Oferta.
 	@Test
 	public void PR27() {
-
 		//Login
 		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
 		PO_LoginView.fillForm(driver, "prueba@prueba.com", "123456");
