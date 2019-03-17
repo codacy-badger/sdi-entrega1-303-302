@@ -20,9 +20,9 @@
 				id="tableOffers">
 				<thead>
 					<tr>
-						<th class="col-md-1">id</th>
-						<th>Descripción</th>
-						<th>Precio</th>
+						<th class="col-md-1" th:text="#{offer.list.id}"></th>
+						<th class="col-md-1" th:text="#{offer.list.description}"></th>
+						<th class="col-md-1" th:text="#{offer.list.price}"></th>
 						<th class="col-md-1"></th>
 						<th class="col-md-1"></th>
 						<th class="col-md-1"></th>
@@ -35,10 +35,10 @@
 						<td th:text="${offer.price}">10</td>
 						<td th:if="${offer.sold} == false" th:text="Disponible"></td>
 						<td th:if="${offer.sold} == true" th:text="Vendido"></td>
-						<td><a th:href="${'/offer/details/' + offer.id}">detalles</a></td>
-						<td><a th:href="${'/offer/edit/' + offer.id}">modificar</a></td>
-						<td><a th:href="${'/offer/delete/' + offer.id}">eliminar</a></td>
-						<td><a th:href="${'/offer/special/' + offer.id}">hacer destacada</a></td>
+						<td><a th:href="${'/offer/details/' + offer.id}" th:text="#{offer.mylist.details}"></a></td>
+						<td><a th:href="${'/offer/edit/' + offer.id}" th:text="#{offer.mylist.modify}"></a></td>
+						<td><a th:href="${'/offer/delete/' + offer.id}" th:text="#{offer.mylist.delete}"></a></td>
+						<td><a th:href="${'/offer/special/' + offer.id}" th:text="#{offer.mylist.special}"></a></td>
 					</tr>
 				</tbody>
 			</table>
