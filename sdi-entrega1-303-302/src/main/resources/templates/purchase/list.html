@@ -6,16 +6,16 @@
 	<nav th:replace="fragments/nav" />
 	<div class="container">
 		<h2>Ofertas</h2>
-		<p>Tus compras han sido:</p>
+		<p th:text="#{offer.purchase.title}"></p>
 		<div class="table-responsive">
 			<table class="table table-hover" th:fragment="tablePurchases"
 				id="tablePurchases">
 				<thead>
 					<tr>
-						<th class="col-md-1">id</th>
-						<th>Descripción</th>
-						<th>Precio</th>
-						<th class="col-md-1"></th>
+							<th class="col-md-1" th:text="#{offer.list.id}"></th>
+							<th class="col-md-1" th:text="#{offer.list.title}"></th>
+							<th class="col-md-1" th:text="#{offer.list.description}"></th>
+							<th class="col-md-1" th:text="#{offer.list.price}"></th>
 						<th class="col-md-1"></th>
 						<th class="col-md-1"></th>
 					</tr>
