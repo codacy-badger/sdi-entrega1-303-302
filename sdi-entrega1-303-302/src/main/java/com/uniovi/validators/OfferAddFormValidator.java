@@ -35,7 +35,7 @@ public class OfferAddFormValidator implements Validator {
 			errors.rejectValue("picture", "Error.offer.add.picture");
 		}
 		else if (offer.getUser().getBalance() < 20) {
-			errors.rejectValue("special", "Error.offer.add.picture");
+			errors.rejectValue("special", "Error.offer.add.special");
 		}
 	}
 }

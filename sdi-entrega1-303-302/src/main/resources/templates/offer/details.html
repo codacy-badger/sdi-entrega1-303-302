@@ -32,6 +32,15 @@
 			<div class="panel-body"
 				th:text="${#dates.format(offer.date, 'dd-MM-yyyy')}">01-01-1998</div>
 		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">Enviar mensaje al vendedor</div>
+			<form method="post" action="/chat/add/">
+				Email Receptor:<input type="text" name="emailusuario"
+					th:value="${offer.user.email}"> <input type="text"
+					name="content">
+				<button type="submit" class="enviachat">Enviar</button>
+			</form>
+		</div>
 		<div th:if="${offer.sold == false}" class="panel panel-default">
 			<div class="panel-heading"></div>
 			<a th:href="@{'/cart/add/{id}'(id=${offer.id})}" class="col-md-1">

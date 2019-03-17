@@ -1,9 +1,7 @@
 package com.uniovi.services;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpSession;
@@ -19,7 +17,7 @@ import org.springframework.stereotype.Service;
 import com.uniovi.entities.Offer;
 import com.uniovi.entities.User;
 import com.uniovi.repositories.OffersRepository;
-import com.uniovi.repositories.PurchasesRepository;
+import com.uniovi.repositories.UsersRepository;
 
 @Service
 public class OffersService {
@@ -28,6 +26,8 @@ public class OffersService {
 	private HttpSession httpSession;
 	@Autowired
 	private OffersRepository offersRepository;
+	@Autowired
+	private UsersRepository usersRepository;
 
 
 //	public Page<Offer> getOffers() {
@@ -71,12 +71,19 @@ public class OffersService {
 		}
 	}
 	
-	public void setOfferSpecial(boolean bool, Long id) {
+	public boolean setOfferSpecial(boolean bool, Long id) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String email = auth.getName();
 		Offer mark = offersRepository.findById(id).get();
-		if (mark.getUser().getEmail().equals(email)) {
+		if (mark.getUser().getEmail().equals(email) && usersRepository.findByEmail(email).getBalance()>=20) {
 			offersRepository.setSpecial(bool, id);
+			User user= usersRepository.findByEmail(email);
+			user.setBalance(user.getBalance()-20);
+			usersRepository.save(user);
+			return true;
+		}
+		else {
+			return false;
 		}
 	}
 

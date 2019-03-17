@@ -20,10 +20,12 @@
 				class="dropdown-toggle" data-toggle="dropdown" href="#"
 				th:text="#{manage.users.message}"><span class="caret"></span> </a>
 				<ul class="dropdown-menu">
-					<li><a href="/user/add" th:text="#{add.message}"></a></li>
-					<li><a href="/user/list" th:text="#{see.users.message}"></a></li>
+					<li><a href="/user/add" th:text="#{add.user.message}"></a></li>
+					<li><a href="/user/list" th:text="#{see.user.message}"></a></li>
 				</ul></li>
-			<li sec:authorize="isAuthenticated()"><a class="all" href="/offer/list"> Todas las ofertas
+			<li sec:authorize="isAuthenticated()"><a class="all" href="/offer/list" th:text="#{see.offers}">
+			</a></li>
+			<li sec:authorize="isAuthenticated()"><a class="messages" href="/chat/list" th:text="#{see.chat.message}">
 			</a></li>
 		</ul>
 

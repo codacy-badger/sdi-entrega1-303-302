@@ -114,10 +114,13 @@ public class OffersController {
 		return "redirect:/offer/list";
 	}
 	
-	@RequestMapping(value = "/offer/{id}/special", method = RequestMethod.GET)
+	@RequestMapping(value = "/offer/special/{id}", method = RequestMethod.GET)
 	public String setSpecialTrue(Model model, @PathVariable Long id) {
-		offersService.setOfferSpecial(true,id); 
-		return "redirect:/offer/list";
+		boolean result = offersService.setOfferSpecial(true,id); 
+		if(result) 
+			return "redirect:/offer/list";
+		return "redirect:/cart/error";
+		
 	}
 
 	@RequestMapping(value = "/offer/{id}/nospecial", method = RequestMethod.GET)

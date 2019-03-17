@@ -1,14 +1,14 @@
 package com.uniovi.services;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.uniovi.entities.Chat;
+import com.uniovi.entities.Message;
 import com.uniovi.entities.Offer;
 import com.uniovi.entities.User;
 
@@ -16,6 +16,8 @@ import com.uniovi.entities.User;
 public class InsertSampleDataService {
 	@Autowired
 	private UsersService usersService;
+	@Autowired
+	private ChatService chatService;
 	@Autowired
 	private OffersService marksService;
 	@Autowired
@@ -28,12 +30,11 @@ public class InsertSampleDataService {
 		ArrayList<User> u= new ArrayList<User>();
 		User user1 = new User("pruebadeemail@prueba.com", "Pedro", "Díaz");
 		user1.setPassword("123456");
-
 		u.add(user1);
 		usersService.addUser(user1);
 		User user2 = new User("prueba@prueba.com", "Carlos", "Castro");
 		user2.setPassword("123456");
-		
+
 		u.add(user2);
 		usersService.addUser(user2);
 		User user3 = new User("123@prueba.com", "Federico", "Gomez");
@@ -72,6 +73,16 @@ public class InsertSampleDataService {
 				i=i+1;;
 			}
 		}
+		Message message = new Message();
+		Chat chat = new Chat();
+		chat.setUser(user1);
+		message.setChat(chat);
+		message.setFrom(user1);
+		message.setMessage("hola");
+		message.setFrom(user2);
+		chat.setDestine(user2);
+		chat.getMessages().add(message);
+		chatService.add(chat);
 
 	}
 }

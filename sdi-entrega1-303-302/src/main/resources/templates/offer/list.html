@@ -41,7 +41,7 @@
 								<button type="button" class="botoncomprar" th:text="comprar">Añadir
 									al carrito</button></td>
 						<td th:if="${offer.sold} == true" th:text="Vendido"></td>
-						<td><a th:href="${'/offer/details/' + offer.id}">detalles</a></td>
+						<td><a th:href="${'/offer/details/' + offer.id}" class="details">detalles</a></td>
 					</tr>
 				</tbody>
 			</table>
