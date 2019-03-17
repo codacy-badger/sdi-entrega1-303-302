@@ -11,23 +11,23 @@
 				<input name="searchText" type="text" class="form-control" size="50"
 					placeholder="Buscar por Titulo de oferta">
 			</div>
-			<button type="submit" class="busqueda">Buscar</button>
+			<button type="submit" class="busqueda" th:text="#{offer.listall.search}"></button>
 		</form>
-		<p>Las ofertas disponibles son las siguientes:</p>
+		<p th:text="#{offer.listall.title}"></p>
 		<div class="table-responsive">
 			<table class="table table-hover" th:fragment="tableOffers"
 				id="tableOffers">
 				<thead>
 					<tr>
-						<th class="col-md-1">id</th>
-						<th class="col-md-1">Titulo</th>
-						<th class="col-md-1">Descripción</th>
-						<th class="col-md-1">Precio</th>
-						<th class="col-md-1">Stock</th>
-						<th class="col-md-1">Mas informacion</th>
-						<th class="col-md-1"></th>
-						<th class="col-md-1"></th>
-						<th class="col-md-1"></th>
+							<th class="col-md-1" th:text="#{offer.list.id}"></th>
+							<th class="col-md-1" th:text="#{offer.list.title}"></th>
+							<th class="col-md-1" th:text="#{offer.list.description}"></th>
+							<th class="col-md-1" th:text="#{offer.list.price}"></th>
+							<th class="col-md-1" th:text="#{offer.list.stock}"></th>
+							<th class="col-md-1" th:text="#{offer.list.more}"></th>
+							<th class="col-md-1"></th>
+							<th class="col-md-1"></th>
+							<th class="col-md-1"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -38,10 +38,9 @@
 						<td th:text="${offer.price}">10</td>
 						<td th:if="${offer.sold} == false"><a
 							th:href="@{'/cart/add/{id}'(id=${offer.id})}" class="col-md-1">
-								<button type="button" class="botoncomprar" th:text="comprar">Añadir
-									al carrito</button></td>
-						<td th:if="${offer.sold} == true" th:text="Vendido"></td>
-						<td><a th:href="${'/offer/details/' + offer.id}" class="details">detalles</a></td>
+								<button type="button" class="botoncomprar" th:text="#{offer.listall.buy}"></button></td>
+						<td th:if="${offer.sold} == true" th:text="#{offer.listall.sold}""></td>
+						<td><a th:href="${'/offer/details/' + offer.id}" class="details" th:text="#{offer.listall.details}"></a></td>
 					</tr>
 				</tbody>
 			</table>
