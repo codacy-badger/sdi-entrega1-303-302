@@ -7,11 +7,11 @@
 	<nav th:replace="fragments/nav" />
 
 	<div class="container">
-		<h2>Agregar Oferta</h2>
+		<h2 th:text="#{add.offer}"></h2>
 		<form class="form-horizontal" method="post" action="/offer/add"
 			th:object="${offer}">
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="title">Titulo:</label>
+				<label class="control-label col-sm-2" for="title" th:text="#{offer.add.title}"></label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="title"
 						placeholder="Opel Corsa" /> <span
@@ -20,7 +20,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="description">Descripcion:</label>
+				<label class="control-label col-sm-2" for="description" th:text="#{offer.add.description}"></label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="description"
 						placeholder="Vendo Opel Corsa" /> <span
@@ -29,7 +29,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="pwd">Precio:</label>
+				<label class="control-label col-sm-2" for="pwd" th:text="#{offer.add.price}"></label>
 				<div class="col-sm-10">
 					<input type="number" class="form-control" name="price"
 						placeholder="En euros" /> <span
@@ -38,8 +38,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="picture">URL
-					Imagen principal:</label>
+				<label class="control-label col-sm-2" for="picture" th:text="#{offer.add.image}"></label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="picture"
 						placeholder="http://xxxxxxx"/> <span
@@ -48,7 +47,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="special">¿Quiere hacer su oferta destacada? (20€):</label>
+				<label class="control-label col-sm-2" for="special" th:text="#{offer.add.special}"></label>
 				<div class="col-sm-10">
 					<input type="checkbox" class="form-control" name="special"/><span
 						class="text-danger" th:if="${#fields.hasErrors('special')}"
@@ -57,7 +56,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-primary">Enviar</button>
+					<button type="submit" class="btn btn-primary" th:text="#{offer.add.send}"></button>
 				</div>
 			</div>
 		</form>
