@@ -50,7 +50,7 @@
 							th:text="#{language.es}"></span>
 					</a></li>
 				</ul></li>
-				<li sec:authorize="isAuthenticated()"><a href="/purchase/list">Mis compras
+				<li sec:authorize="isAuthenticated()"><a href="/purchase/list" >Mis compras
 			</a></li>
 			<li sec:authorize="!isAuthenticated()"><a href="/signup"
 				th:text="#{signup.message}"> <span
@@ -58,10 +58,10 @@
 			</a></li>
 			<li sec:authorize="!isAuthenticated()"><a href="/login"
 				th:text="#{login.message}"> <span
-					class="glyphicon glyphicon-log-in" th:text="#{iden.message}"></span>
+					class="glyphicon glyphicon-log-in" th:text="#{login.message}"></span>
 			</a></li>
 			<li sec:authorize="isAuthenticated()"><a href="/logout"> <span
-					class="glyphicon glyphicon-log-out">Logout</span>
+					class="glyphicon glyphicon-log-out" th:text="#{logout.message}" ></span>
 			</a></li>
 		</ul>
 	</div>
