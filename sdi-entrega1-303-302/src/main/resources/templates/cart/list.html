@@ -10,7 +10,7 @@
 	<div class="container">
 
 		<h1 class="lista" th:text="#{cart.title}">
-			<span sec:authentication="name"></span> 
+			<span sec:authentication="name"></span>
 		</h1>
 
 		<div class="panel-default well" th:each="offer : ${cartList}">
@@ -20,17 +20,19 @@
 						th:href="@{'/offer/details/' + ${offer.id}}"></a>
 				</h1>
 				<h3 th:text="#{cart.des}"></h3>
-				<h3 th:text="${offer.description}" ></h3>
+				<h3 th:text="${offer.description}"></h3>
 			</div>
 			<div class="row panel-body">
 				<a th:href="@{'/cart/remove/{id}'(id=${offer.id})}" class="col-md-1">
-					<button type="button" class="btn btn-primary" th:text="#{cart.remove}"></button>
+					<button type="button" class="btn btn-primary"
+						th:text="#{cart.remove}"></button>
 				</a>
 			</div>
 			<br></br>
 		</div>
 
 		<div th:if="${not #lists.isEmpty(cartList)}">
+			<a th:href="@{'/cart/checkout'}" class="col-md-1">
 				<button type="button" class="end" th:text="Checkout">Checkout</button>
 			</a>
 		</div>

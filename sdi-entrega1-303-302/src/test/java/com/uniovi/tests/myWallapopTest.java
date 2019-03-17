@@ -680,7 +680,7 @@ public class myWallapopTest {
 		boton = By.className("end");
 		driver.findElement(boton).click();
 		// Comprobamos mensaje
-		PO_View.checkElement(driver, "class", "error");
+		PO_View.checkElement(driver, "text", "Error");
 		// Salimos de sesion
 		PO_PrivateView.clickOption(driver, "logout", "class", "btn btn-primary");
 		 
@@ -718,6 +718,31 @@ public class myWallapopTest {
 	// Usuario/Listado de Usuarios de Admin/Vista de alta de Oferta.
 	public void PR27() {
 
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+
+		PO_View.checkElement(driver, "text", "Contraseña");
+		List<WebElement> elementos = PO_View.checkElement(driver, "class", "dropdown-menu");
+		elementos.get(0).click();
+
+		// Pinchamos en la opción de ingles
+		elementos = PO_View.checkElement(driver, "free", "//a[contains(@id,'btnEnglish')]");
+		elementos.get(0).click();
+		PO_View.checkElement(driver, "text", "Password");
+		// Click en usuarios
+
+		elementos = PO_View.checkElement(driver, "class", "all");
+		elementos.get(0).click();
+
+		// Rellenamos el formulario con admin
+		PO_LoginView.fillForm(driver, "prueba@prueba.com", "123456");
+		// Pinchamos en la opción de lista de usuarios.
+		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'purchase/list')]");
+		elementos.get(0).click();
+		PO_View.checkElement(driver, "text", "OPEL21");
+		PO_View.checkElement(driver, "text", "OPEL20");
+		// Salimos de sesion
+		PO_PrivateView.clickOption(driver, "logout", "class", "btn btn-primary");
 	}
 
 	//
