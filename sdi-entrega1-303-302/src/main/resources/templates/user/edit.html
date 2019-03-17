@@ -7,7 +7,7 @@
 	<nav th:replace="fragments/nav" />
 
 	<div class="container">
-		<h2>Editar Usuario</h2>
+		<h2 th:text="#{user.edit.title}"></h2>
 		<form class="form-horizontal" method="post"
 			th:action="${'/user/edit/' + user.id}">
 			<div class="form-group">
@@ -19,14 +19,14 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="name">Nombre:</label>
+				<label class="control-label col-sm-2" for="name" th:text="#{user.details.name}"></label>
 				<div class="col-sm-10">
 					<input th:value="${user.name}" type="text" class="form-control"
 						name="name" placeholder="Inserta un nombre" required="true" />
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="lastName">Apellidos:</label>
+				<label class="control-label col-sm-2" for="lastName" th:text="#{user.details.sur}"></label>
 				<div class="col-sm-10">
 					<input th:value="${user.lastName}" type="text" class="form-control"
 						name="lastName" placeholder="Inserta un apellido" required="true" />
@@ -34,7 +34,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-primary">Modificar</button>
+					<button type="submit" class="btn btn-primary" th:text="#{user.details.send}"></button>
 				</div>
 			</div>
 		</form>
