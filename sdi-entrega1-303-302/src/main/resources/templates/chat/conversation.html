@@ -5,7 +5,7 @@
 	<!-- Barra de Navegación superior -->
 	<nav th:replace="fragments/nav" />
 	<div class="container">
-		<h2>Chatear:</h2>
+		<h2 th:text="#{chat.name}"></h2>
 		<div class="table-responsive">
 			<table class="table table-hover" th:fragment="messagesTable"
 				id="messagesTable">
@@ -14,7 +14,7 @@
 						<th class="col-md-1">Email</th>
 						<th class="col-md-1"></th>
 						<th class="col-md-1"></th>
-						<th class="col-md-1">Contenido:</th>
+						<th class="col-md-1" th:text="#{chat.content}"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -25,10 +25,10 @@
 					</tr>
 				</tbody>
 			</table>
-			<form method="post" action="/chat/add/">
-				Email Receptor:<input type="text" name="emailusuario", th:value= "${user.email}">
+			<form method="post" action="/chat/add/" th:text="#{chat.email}">
+				<input type="text" name="emailusuario", th:value= "${user.email}">
 				<input type="text" name="content">
-				<button type="submit" class="enviachat">Enviar</button>
+				<button type="submit" class="enviachat" th:text="#{chat.send}"></button>
 			</form>
 		</div>
 	</div>
