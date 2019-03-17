@@ -20,7 +20,7 @@
 				<tbody>
 					<tr th:each="chat : ${list}">
 						<td th:text="${chat.destine.email}">1</td>
-						<td><a th:href="${'/chat/conversation/' + chat.destine.id}" class="open" th:text="#{chat.opem}"></a></td>
+						<td><a th:href="${'/chat/conversation/' + chat.destine.id}" class="open" th:text="#{chat.open}"></a></td>
 						<td><a th:href="${'/chat/delete/' + chat.id}" class="delete" th:text="#{chat.name}"></a></td>
 					</tr>
 				</tbody>

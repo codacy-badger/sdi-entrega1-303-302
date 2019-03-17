@@ -25,7 +25,7 @@
 					</tr>
 				</tbody>
 			</table>
-			<form method="post" action="/chat/add/" th:text="#{chat.email}">
+			<form method="post" action="/chat/add/">Email:
 				<input type="text" name="emailusuario", th:value= "${user.email}">
 				<input type="text" name="content">
 				<button type="submit" class="enviachat" th:text="#{chat.send}"></button>

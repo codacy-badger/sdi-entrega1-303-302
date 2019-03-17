@@ -7,13 +7,12 @@
 		<h2 th:text="#{welcome.message}"></h2>
 		<h3 th:text="#{private.message}"></h3>
 		<p th:text="#{auth.message}">
-			<span
-				sec:authentication="principal.username" th:inline="text"> </span>
+		<p
+				sec:authentication="principal.username" th:inline="text"> </p>
 		</p>
 		<p th:text="#{sald.message}">
-			<span
-				th:text="${user.balance}"> </span>
 		</p>
+		<p th:text="${user.balance}"> </p>
 		<form class="navbar-form" action="/offer/list">
 			<div class="form-group">
 				<input name="searchText" type="text" class="form-control" size="50"
@@ -34,9 +33,6 @@
 							<th class="col-md-1" th:text="#{offer.list.price}"></th>
 							<th class="col-md-1" th:text="#{offer.list.stock}"></th>
 							<th class="col-md-1" th:text="#{offer.list.more}"></th>
-							<th class="col-md-1"></th>
-							<th class="col-md-1"></th>
-							<th class="col-md-1"></th>
 						</tr>
 					</thead>
 					<tbody>

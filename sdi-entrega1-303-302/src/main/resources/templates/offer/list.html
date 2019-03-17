@@ -11,7 +11,8 @@
 				<input name="searchText" type="text" class="form-control" size="50"
 					placeholder="Buscar por Titulo de oferta">
 			</div>
-			<button type="submit" class="busqueda" th:text="#{offer.listall.search}"></button>
+			<button type="submit" class="busqueda"
+				th:text="#{offer.listall.search}"></button>
 		</form>
 		<p th:text="#{offer.listall.title}"></p>
 		<div class="table-responsive">
@@ -19,15 +20,15 @@
 				id="tableOffers">
 				<thead>
 					<tr>
-							<th class="col-md-1" th:text="#{offer.list.id}"></th>
-							<th class="col-md-1" th:text="#{offer.list.title}"></th>
-							<th class="col-md-1" th:text="#{offer.list.description}"></th>
-							<th class="col-md-1" th:text="#{offer.list.price}"></th>
-							<th class="col-md-1" th:text="#{offer.list.stock}"></th>
-							<th class="col-md-1" th:text="#{offer.list.more}"></th>
-							<th class="col-md-1"></th>
-							<th class="col-md-1"></th>
-							<th class="col-md-1"></th>
+						<th class="col-md-1" th:text="#{offer.list.id}"></th>
+						<th class="col-md-1" th:text="#{offer.list.title}"></th>
+						<th class="col-md-1" th:text="#{offer.list.description}"></th>
+						<th class="col-md-1" th:text="#{offer.list.price}"></th>
+						<th class="col-md-1" th:text="#{offer.list.stock}"></th>
+						<th class="col-md-1" th:text="#{offer.list.more}"></th>
+						<th class="col-md-1"></th>
+						<th class="col-md-1"></th>
+						<th class="col-md-1"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -37,10 +38,11 @@
 						<td th:text="${offer.description}">Ejercicio 1</td>
 						<td th:text="${offer.price}">10</td>
 						<td th:if="${offer.sold} == false"><a
-							th:href="@{'/cart/add/{id}'(id=${offer.id})}" class="col-md-1">
-								<button type="button" class="botoncomprar" th:text="#{offer.listall.buy}"></button></td>
-						<td th:if="${offer.sold} == true" th:text="#{offer.listall.sold}""></td>
-						<td><a th:href="${'/offer/details/' + offer.id}" class="details" th:text="#{offer.listall.details}"></a></td>
+							th:href="@{'/cart/add/{id}'(id=${offer.id})}" class="col-md-1" />
+								<button type="button" class="botoncomprar" th:text="#{offer.details.buy}"></button></td>
+							<td th:if="${offer.sold} == true" th:text="#{offer.listall.sold}"></td>
+							<td><a th:href="${'/offer/details/' + offer.id}"
+							class="details" th:text="#{offer.list.more}"></a></td>
 					</tr>
 				</tbody>
 			</table>

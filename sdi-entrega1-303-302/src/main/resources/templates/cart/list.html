@@ -17,13 +17,12 @@
 			<div class="panel-heading">
 				<h1>
 					<a th:text="${offer.title}"
-						th:href="@{'/offer/details/' + ${offer.id}}" th:text="#{cart.name}"></a>
+						th:href="@{'/offer/details/' + ${offer.id}}"></a>
 				</h1>
-				<h3 th:text="${offer.description}" th:text="#{cart.des}"></h3>
+				<h3 th:text="#{cart.des}"></h3>
+				<h3 th:text="${offer.description}" ></h3>
 			</div>
 			<div class="row panel-body">
-				<div th:inline="text" class="col-md-2" th:text="#{cart.price}">
-					[[${offer.price}]] $</div>
 				<a th:href="@{'/cart/remove/{id}'(id=${offer.id})}" class="col-md-1">
 					<button type="button" class="btn btn-primary" th:text="#{cart.remove}"></button>
 				</a>
