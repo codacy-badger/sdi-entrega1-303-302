@@ -38,7 +38,9 @@ public class myWallapopTest {
 	//	static String Geckdriver024 = "/Users/yagogarciarodriguez/Downloads/a/geckodriver024mac";
 	// Común a Windows y a MACOSX
 	static WebDriver driver = getDriver(PathFirefox64, Geckdriver022);
-	static String URL = "http://localhost:8090";
+	static String URLlocal = "http://localhost:8090";
+	static String URLremota = "http://ec2-34-224-173-6.compute-1.amazonaws.com:8080";
+	static String URL = URLremota; // Se va a probar con la URL remota, sino URL=URLlocal
 
 	public static WebDriver getDriver(String PathFirefox, String Geckdriver) {
 
