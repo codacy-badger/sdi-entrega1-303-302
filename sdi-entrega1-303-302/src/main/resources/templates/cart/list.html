@@ -9,32 +9,29 @@
 
 	<div class="container">
 
-		<h1 class="lista">
-			<span sec:authentication="name"></span> Carrito
+		<h1 class="lista" th:text="#{cart.title}">
+			<span sec:authentication="name"></span> 
 		</h1>
 
 		<div class="panel-default well" th:each="offer : ${cartList}">
 			<div class="panel-heading">
 				<h1>
 					<a th:text="${offer.title}"
-						th:href="@{'/offer/details/' + ${offer.id}}">Nombre:</a>
+						th:href="@{'/offer/details/' + ${offer.id}}" th:text="#{cart.name}"></a>
 				</h1>
-				<h3 th:text="${offer.description}">Descripcion</h3>
+				<h3 th:text="${offer.description}" th:text="#{cart.des}"></h3>
 			</div>
 			<div class="row panel-body">
-				<div th:inline="text" class="col-md-2">precio:
+				<div th:inline="text" class="col-md-2" th:text="#{cart.price}">
 					[[${offer.price}]] $</div>
 				<a th:href="@{'/cart/remove/{id}'(id=${offer.id})}" class="col-md-1">
-					<button type="button" class="btn btn-primary" th:text="Remove">Eliminar
-						del carrito</button>
+					<button type="button" class="btn btn-primary" th:text="#{cart.remove}"></button>
 				</a>
 			</div>
 			<br></br>
 		</div>
 
 		<div th:if="${not #lists.isEmpty(cartList)}">
-			<h2 class="col-md-11" th:inline="text">Total: [[${total}]]</h2>€
-			<a th:href="@{'/cart/checkout'}" class="col-md-1">
 				<button type="button" class="end" th:text="Checkout">Checkout</button>
 			</a>
 		</div>
