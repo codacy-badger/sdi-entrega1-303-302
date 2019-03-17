@@ -5,16 +5,16 @@
 	<!-- Barra de Navegación superior -->
 	<nav th:replace="fragments/nav" />
 	<div class="container">
-		<h2>Ofertas</h2>
+		<h2 th:text="#{offers}"></h2>
 		<form class="navbar-form" action="/offer/list">
 			<div class="form-group">
 				<input name="searchText" type="text" class="form-control" size="50"
-					placeholder="Buscar por Titulo de oferta">
+					th:placeholder="#{offer.searchByName}">
 			</div>
-			<button type="submit" class="btn btn-default">Buscar</button>
+			<button type="submit" class="btn btn-default" th:text="#{welcome.search}"></button>
 		</form>
-		<p>Sus ofertas son:</p>
-		<button type="button" id="updateButton" class="btn btn-default">Actualizar</button>
+		<p th:text="#{offer.yours}"></p>
+		<button type="button" id="updateButton" class="btn btn-default" th:text="#{update.message}"></button>
 		<div class="table-responsive">
 			<table class="table table-hover" th:fragment="tableOffers"
 				id="tableOffers">
@@ -33,8 +33,8 @@
 						<td th:text="${offer.id}">1</td>
 						<td th:text="${offer.description}">Ejercicio 1</td>
 						<td th:text="${offer.price}">10</td>
-						<td th:if="${offer.sold} == false" th:text="Disponible"></td>
-						<td th:if="${offer.sold} == true" th:text="Vendido"></td>
+						<td th:if="${offer.sold} == false" th:text="#{offer.status.avaible}"></td>
+						<td th:if="${offer.sold} == true" th:text="#{offer.status.sold}"></td>
 						<td><a th:href="${'/offer/details/' + offer.id}" th:text="#{offer.mylist.details}"></a></td>
 						<td><a th:href="${'/offer/edit/' + offer.id}" th:text="#{offer.mylist.modify}"></a></td>
 						<td><a th:href="${'/offer/delete/' + offer.id}" th:text="#{offer.mylist.delete}"></a></td>

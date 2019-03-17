@@ -18,7 +18,7 @@
 			<li id="users-menu" class="dropdown"
 				sec:authorize="hasRole('ROLE_ADMIN')"><a
 				class="dropdown-toggle" data-toggle="dropdown" href="#"
-				th:text="#{manage.users.message}"><span class="caret"></span> </a>
+				th:text="#{manage.users}"><span class="caret"></span> </a>
 				<ul class="dropdown-menu">
 					<li><a href="/user/add" th:text="#{add.user.message}"></a></li>
 					<li><a href="/user/list" th:text="#{see.user.message}"></a></li>
@@ -50,7 +50,7 @@
 							th:text="#{language.es}"></span>
 					</a></li>
 				</ul></li>
-				<li sec:authorize="isAuthenticated()"><a href="/purchase/list" >Mis compras
+				<li sec:authorize="isAuthenticated()"><a href="/purchase/list" th:text="#{my.purchases}" >
 			</a></li>
 			<li sec:authorize="!isAuthenticated()"><a href="/signup"
 				th:text="#{signup.message}"> <span

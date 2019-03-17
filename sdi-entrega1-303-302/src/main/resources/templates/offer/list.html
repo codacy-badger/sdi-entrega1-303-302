@@ -5,11 +5,11 @@
 	<!-- Barra de Navegación superior -->
 	<nav th:replace="fragments/nav" />
 	<div class="container">
-		<h2>Ofertas</h2>
+		<h2 th:text="#{offers}"></h2>
 		<form class="navbar-form" action="/offer/list">
 			<div class="form-group">
 				<input name="searchText" type="text" class="form-control" size="50"
-					placeholder="Buscar por Titulo de oferta">
+				th:placeholder="#{offer.searchByName}">
 			</div>
 			<button type="submit" class="busqueda"
 				th:text="#{offer.listall.search}"></button>

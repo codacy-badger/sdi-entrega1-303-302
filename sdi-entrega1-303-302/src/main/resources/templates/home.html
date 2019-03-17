@@ -41,9 +41,9 @@
 							<td th:text="${offer.title}">Opel corsa</td>
 							<td th:text="${offer.description}">50 cv</td>
 							<td th:text="${offer.price}">10</td>
-							<td th:if="${offer.sold} == false" th:text="Disponible"></td>
-							<td th:if="${offer.sold} == true" th:text="Vendido"></td>
-							<td><a th:href="${'/offer/details/' + offer.id}">detalles</a></td>
+							<td th:if="${offer.sold} == false" th:text="#{offer.status.avaible}"></td>
+							<td th:if="${offer.sold} == true" th:text="#{offer.status.sold}"></td>
+							<td><a th:href="${'/offer/details/' + offer.id}" th:text="#{offer.listall.details}"></a></td>
 
 						</tr>
 					</tbody>
@@ -74,9 +74,10 @@
 							<td th:text="${offer.title}">Opel corsa</td>
 							<td th:text="${offer.description}">50 cv</td>
 							<td th:text="${offer.price}">10</td>
-							<td th:if="${offer.sold} == false" th:text="Disponible"></td>
-							<td th:if="${offer.sold} == true" th:text="Vendido"></td>
-							<td><a th:href="${'/offer/details/' + offer.id}">detalles</a></td>
+							<td th:if="${offer.sold} == false" th:text="#{offer.status.avaible}"></td>
+							<td th:if="${offer.sold} == true" th:text="#{offer.status.sold}"></td>
+							<td><a th:href="${'/offer/details/' + offer.id}" th:text="#{offer.listall.details}"></a></td>
+
 
 						</tr>
 					</tbody>
