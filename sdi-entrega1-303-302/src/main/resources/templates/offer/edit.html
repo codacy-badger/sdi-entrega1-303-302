@@ -7,11 +7,11 @@
 	<nav th:replace="fragments/nav" />
 
 	<div class="container">
-		<h2>Editar Oferta</h2>
+		<h2 th:text="#{offer.edit.title}"></h2>
 		<form class="form-horizontal" method="post"
 			th:action="${'/offer/edit/' + offer.id}" th:object="${offer}">
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="title">Titulo:</label>
+				<label class="control-label col-sm-2" for="title" th:text="#{offer.edit.title2}"></label>
 				<div class="col-sm-10">
 					<input th:value="${offer.title}" type="text" class="form-control"
 						name="title" placeholder="Ejemplo Ejercicio 1" required="true" />
@@ -20,7 +20,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="description">Descripción:</label>
+				<label class="control-label col-sm-2" for="description" th:text="#{offer.edit.description}"></label>
 				<div class="col-sm-10">
 					<input th:value="${offer.description}" type="text"
 						class="form-control" name="description"
@@ -31,7 +31,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="price">precio:</label>
+				<label class="control-label col-sm-2" for="price" th:text="#{offer.edit.price}"></label>
 				<div class="col-sm-10">
 					<input th:value="${offer.price}" type="number" class="form-control"
 						name="price" placeholder="Precio positivo" required="true" />
@@ -41,8 +41,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="picture">URL
-					Imagen principal:</label>
+				<label class="control-label col-sm-2" for="picture" th:text="#{offer.edit.image}"></label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="picture"
 						placeholder="http://xxxxxxx" required="true" /> <span
@@ -52,7 +51,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-primary">Modificar</button>
+					<button type="submit" class="btn btn-primary" th:text="#{offer.edit.sub}"></button>
 				</div>
 			</div>
 		</form>
